@@ -1,0 +1,37 @@
+{
+  "title": "Date Card",
+  "description": "An idea for a date with logistical details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "description": "A brief description of the date idea",
+      "type": "string"
+    },
+    "repeating": {
+      "type": "boolean"
+    },
+    "budgetInDollars": {
+      "type": "number"
+    },
+    "timeOfDay": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Morning", "Afternoon", "Evening"]
+      }
+    },
+    "dayOfWeek": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+      }
+    },
+    "petFriendly": {
+      "type": "boolean"
+    }
+  }
+}

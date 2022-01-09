@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "take hazel to the dog park",
+    "repeating": true,
+    "budgetInDollars": 0,
+    "timeOfDay": [
+      "morning",
+      "afternoon"
+    ],
+    "dayOfWeek": [
+      "Sunday", 
+      "Monday", 
+      "Tuesday", 
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "petFriendly": true
+  },
+  {
+    "id": 2,
+    "name": "get ice cream from scoops",
+    "repeating": true,
+    "budgetInDollars": 15,
+    "timeOfDay": [
+      "afternoon",
+      "evening"
+    ],
+    "dayOfWeek": [
+      "Sunday", 
+      "Monday", 
+      "Tuesday", 
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "petFriendly": false
+  }
+]
