@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 import { ChakraProvider } from '@chakra-ui/react';
 import './style.css';
 
 const title = 'Date App';
 ReactDOM.render(
 	<ChakraProvider>
-		<h1>{title}</h1>
+		<App />
 	</ChakraProvider>,
 	document.getElementById('app')
 );
