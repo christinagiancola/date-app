@@ -5,10 +5,15 @@ const Header = () => {
 	return (
 		<Box w='100%'>
 			<HStack id='headerContainer' justify='space-between' mt='3'>
-				<VStack align='flex-start' color='teal'>
+				<VStack align='flex-start' color='teal' px='2'>
 					<Heading as='h1'>date app</Heading>
 					<Heading as='h2' size='md'>
-						less planning, more doing
+						<span class='line'>
+							<p>less planning,&nbsp;</p>
+						</span>
+						<span class='line'>
+							<p>more doing</p>
+						</span>
 					</Heading>
 				</VStack>
 				<Spacer />
