@@ -1,5 +1,5 @@
 import React from 'react';
-import { HStack, VStack, Box, Heading, Button } from '@chakra-ui/react';
+import { Flex, Spacer, HStack, VStack, Box, Heading, Button } from '@chakra-ui/react';
 
 const Header = () => {
 	return (
@@ -11,6 +11,13 @@ const Header = () => {
 						less planning, more doing
 					</Heading>
 				</VStack>
+				<Spacer />
+				<Button variant='solid' colorScheme='teal'>
+					Login
+				</Button>
+				<Button variant='solid' colorScheme='teal'>
+					Login
+				</Button>
 				<Button variant='solid' colorScheme='teal'>
 					Login
 				</Button>
