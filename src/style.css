@@ -1,14 +1,14 @@
-#headerContainer {
+/* #headerContainer {
 	outline: 1px solid red;
-}
+} */
 
-#bodyContainer {
+/* #bodyContainer {
 	outline: 1px solid red;
-}
+} */
 
-#footerContainer {
+/* #footerContainer {
 	outline: 1px solid red;
-}
+} */
 
 span.line {
 	display: inline-block;

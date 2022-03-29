@@ -12,9 +12,12 @@ const Footer = () => {
 				</Flex>
 				<Spacer />
 				<Flex>
-					<Heading as='h3' size='sm' justifyContent=''>
-						Footer Links
-					</Heading>
+					<Box>
+						<a>Link &nbsp;</a>
+						<a>Link &nbsp;</a>
+						<a>Link &nbsp;</a>
+						<a>Link &nbsp;</a>
+					</Box>
 				</Flex>
 			</HStack>
 		</Box>
