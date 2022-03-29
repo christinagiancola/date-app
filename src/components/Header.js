@@ -1,5 +1,6 @@
 import React from 'react';
-import { Flex, Spacer, HStack, VStack, Box, Heading, Button, Link, LinkBox } from '@chakra-ui/react';
+import { Spacer, HStack, VStack, Box, Heading, Button, Link, IconButton } from '@chakra-ui/react';
+import { BsListUl, BsPlusCircle } from 'react-icons/bs';
 
 const Header = () => {
 	return (
@@ -18,10 +19,21 @@ const Header = () => {
 				</VStack>
 				<Spacer />
 				<Box as='nav'>
-					<Link pr='2'>Link</Link>
-					<Link pr='2'>Link</Link>
+					<Button leftIcon={<BsPlusCircle />}>New Date</Button>
+					<IconButton
+						size='lg'
+						icon={<BsPlusCircle />}
+						aria-label='Add a New Date to the Date Library'
+						isRound='true'
+					/>
+					<IconButton
+						size='lg'
+						icon={<BsListUl />}
+						aria-label='Go To Date Library to Edit or Delete Dates'
+						isRound='true'
+					/>
 				</Box>
-				<Button as='btn' variant='solid' colorScheme='teal'>
+				<Button as='btn' variant='solid' colorScheme='teal' borderRadius='50'>
 					Login
 				</Button>
 			</HStack>
