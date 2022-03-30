@@ -1,11 +1,12 @@
 import React from 'react';
-import { Heading, Flex, Box, Container, Button, Spacer } from '@chakra-ui/react';
+import { Heading, Flex, Box, Container, Button, Spacer, IconButton } from '@chakra-ui/react';
+import { BsCalendarPlus } from 'react-icons/bs';
 
 const Body = () => {
 	return (
 		<Flex id='bodyContainer' w='100%' my='3' py='3' justify='center'>
 			<Container bg='lightblue' maxW='xl' borderRadius='100' centerContent>
-				<Flex justify='center' align='center' direction='column'>
+				<Flex justify='center' align='center' direction='column' textTransform='lowercase'>
 					<Heading as='h3' size='lg' mt='5'>
 						take hazel to the dog park
 					</Heading>
@@ -33,9 +34,11 @@ const Body = () => {
 						Repeating?
 					</Heading>
 					<p>Yes</p>
-					<Button as='btn' my='5'>
+					<Button as='btn' variant='solid' size='md' borderRadius='50' mt='5'>
 						it's a date!
 					</Button>
+					<IconButton size='md' icon={<BsCalendarPlus />} variant='outline' borderRadius='50' my='3' />
+					{/* <span>Add Date to Calendar</span> */}
 				</Flex>
 			</Container>
 		</Flex>
