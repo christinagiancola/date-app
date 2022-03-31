@@ -5,7 +5,7 @@ import { BsListUl, BsPlusCircle } from 'react-icons/bs';
 const Header = () => {
 	return (
 		<Box w='100%'>
-			<HStack id='headerContainer' justify='space-between' mt='5' textTransform='lowercase'>
+			<HStack id='headerContainer' justify='space-between' mt='5%' textTransform='lowercase'>
 				<VStack align='flex-start' px='2'>
 					<Heading as='h1' lineHeight='60%'>
 						date app
