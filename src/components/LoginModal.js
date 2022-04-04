@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import {
 	Container,
 	FormControl,
@@ -14,27 +15,32 @@ import {
 
 const LoginModal = () => {
 	const [input, setInput] = useState('');
+	const [loginData, setLoginData] = useState();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
 
-	const handleInputChange = (e) => setInput(e.target.value);
+	// const handleInputChange = (e) => setInput(e.target.value);
+	const onSubmit = (data) => setLoginData(data);
+
+	useEffect(() => {
+		console.log(loginData);
+	}, [loginData]);
 
 	return (
-		<Container maxW='sm' bg='blue.100' py='5'>
-			<FormControl isRequired>
-				<FormLabel htmlFor='email'>Email:</FormLabel>
-				<Input
-					id='email'
-					type='email'
-					value={input}
-					variant='outline'
-					onChange={handleInputChange}
-					placeholder='something@something.com'
-					focusBorderColor='blue.400'
-					borderColor='blue.200'
-					bgColor='white'
-				/>
-			</FormControl>
+		<Container maxW='sm' bg='blue.100' py='12' borderRadius='50'>
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<Input id='name' type='text' placeholder='name' {...register('userName')} />
+				<Input id='email' type='text' placeholder='email' {...register('email')} />
+				<Input id='password' type='password' placeholder='password' {...register('password')} />
+				<Input type='submit' />
+			</form>
 			<HStack spacing='1' justify='center'>
-				<Text color='muted'>Don't have an account?</Text>
+				<Text color='muted' py='4'>
+					Don't have an account?
+				</Text>
 				<Button variant='link' colorScheme='blue'>
 					Sign up
 				</Button>
