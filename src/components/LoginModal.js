@@ -25,6 +25,7 @@ const LoginModal = () => {
 					id='email'
 					type='email'
 					value={input}
+					variant='outline'
 					onChange={handleInputChange}
 					placeholder='something@something.com'
 					focusBorderColor='blue.400'
