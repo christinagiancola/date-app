@@ -32,13 +32,21 @@ const LoginModal = () => {
 	return (
 		<Container maxW='sm' bg='blue.100' py='12' borderRadius='50'>
 			<form onSubmit={handleSubmit(onSubmit)}>
-				<Input id='name' type='text' placeholder='name' {...register('userName')} />
-				<Input id='email' type='text' placeholder='email' {...register('email')} />
-				<Input id='password' type='password' placeholder='password' {...register('password')} />
-				<Input type='submit' />
+				<Input id='name' bg='white' my='1' width='85%' type='text' placeholder='name' {...register('userName')} />
+				<Input id='email' bg='white' my='1' width='85%' type='text' placeholder='email' {...register('email')} />
+				<Input
+					id='password'
+					bg='white'
+					my='1'
+					width='85%'
+					type='password'
+					placeholder='password'
+					{...register('password')}
+				/>
+				<Input bg='blue.300' color='white' width='85%' my='3' type='submit' />
 			</form>
 			<HStack spacing='1' justify='center'>
-				<Text color='muted' py='4'>
+				<Text color='muted' my='s'>
 					Don't have an account?
 				</Text>
 				<Button variant='link' colorScheme='blue'>
