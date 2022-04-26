@@ -4,8 +4,8 @@ import LoginModal from './LoginModal';
 import { Flex } from '@chakra-ui/react';
 
 const Body = () => {
-	const [showDateCard, setShowDateCard] = useState(false);
-	const [showLogin, setShowLogin] = useState(true);
+	const [showDateCard, setShowDateCard] = useState(true);
+	const [showLogin, setShowLogin] = useState(false);
 	let display;
 
 	if (showDateCard) {
@@ -17,7 +17,7 @@ const Body = () => {
 	}
 
 	return (
-		<Flex id='bodyContainer' w='100%' my='3' py='3' justify='center'>
+		<Flex id='bodyContainer' w='100%' my='5' py='3' justify='center'>
 			{display}
 		</Flex>
 	);

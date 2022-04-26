@@ -1,7 +1,14 @@
 /* * {
-	outline: 1px solid greenyellow;
+	outline: 1px solid RED;
 } */
 
 span.line {
 	display: inline-block;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }

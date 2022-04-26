@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Heading, Flex, Button, IconButton } from '@chakra-ui/react';
+import { Container, Heading, Flex, Button, IconButton, Box } from '@chakra-ui/react';
 import { BsCalendarPlus } from 'react-icons/bs';
 
 const DateCard = () => {
@@ -37,10 +37,12 @@ const DateCard = () => {
 					Repeating?
 				</Heading>
 				<p>Yes</p>
-				<Button as='btn' variant='solid' size='md' borderRadius='50' mt='5'>
-					it's a date!
-				</Button>
-				<IconButton size='md' icon={<BsCalendarPlus />} variant='outline' borderRadius='50' my='3' />
+				<Box py='5'>
+					<Button as='btn' variant='solid' size='md' borderRadius='50' mr='2'>
+						it's a date!
+					</Button>
+					<IconButton size='md' icon={<BsCalendarPlus />} variant='solid' borderRadius='50' />
+				</Box>
 				{/* <span>Add Date to Calendar</span> */}
 			</Flex>
 		</Container>
