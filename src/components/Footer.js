@@ -3,8 +3,8 @@ import { Container, Flex, Heading } from '@chakra-ui/react';
 
 const Footer = () => {
 	return (
-		<Container id='footerContainer' w='100%' mt='3' centerContent>
-			<Flex direction='column' align='center'>
+		<Container id='footerContainer' w='100%'>
+			<Flex direction='column' align='center' my='4'>
 				<Heading as='h3' size='sm'>
 					Footer Text
 				</Heading>

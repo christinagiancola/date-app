@@ -1,9 +1,42 @@
+:root {
+	--text-color-main: black;
+	--date-card-bg-color: #f9f3b5;
+	--login-card-bg-color: #b0aa00cd;
+	--login-btn-color: #f9f3b5;
+}
+
 .outline {
 	outline: 1px solid RED;
 }
 
+.text {
+	color: var(--text-color-main);
+}
+
+/* ===== HEADER ===== */
+
 span.line {
 	display: inline-block;
+}
+
+/* ===== DATE CARD ===== */
+
+#date-card {
+	background-color: var(--date-card-bg-color);
+	opacity: 0.7;
+	background-image: radial-gradient(#b0aa00cd 0.75px, var(--date-card-bg-color) 0.75px);
+	background-size: 15px 15px;
+}
+
+/* ===== LOGIN MODAL ===== */
+
+#login-form {
+	background-color: var(--login-card-bg-color);
+}
+
+#login-btn {
+	color: var(--text-color-main);
+	background-color: var(--login-btn-color);
 }
 
 .login-form {

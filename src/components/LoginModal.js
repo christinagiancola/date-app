@@ -30,7 +30,7 @@ const LoginModal = () => {
 	}, [loginData]);
 
 	return (
-		<Container maxW='sm' bg='blue.100' py='12' borderRadius='25'>
+		<Container maxW='sm' py='12' borderRadius='25' id='login-form'>
 			<form onSubmit={handleSubmit(onSubmit)} className='login-form'>
 				<Input id='name' bg='white' my='1' width='85%' type='text' placeholder='name' {...register('userName')} />
 				<Input id='email' bg='white' my='1' width='85%' type='text' placeholder='email' {...register('email')} />
@@ -43,7 +43,7 @@ const LoginModal = () => {
 					placeholder='password'
 					{...register('password')}
 				/>
-				<Input bg='blue.300' color='white' width='85%' my='3' type='submit' />
+				<Input color='white' width='85%' my='3' type='submit' id='login-btn' />
 			</form>
 			<HStack spacing='1' justify='center'>
 				<Text color='muted' my='s'>
