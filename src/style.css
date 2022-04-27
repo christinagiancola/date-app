@@ -1,6 +1,6 @@
-/* * {
+.outline {
 	outline: 1px solid RED;
-} */
+}
 
 span.line {
 	display: inline-block;

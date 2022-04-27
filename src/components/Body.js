@@ -3,9 +3,7 @@ import DateCard from './DateCard';
 import LoginModal from './LoginModal';
 import { Flex } from '@chakra-ui/react';
 
-const Body = () => {
-	const [showDateCard, setShowDateCard] = useState(true);
-	const [showLogin, setShowLogin] = useState(false);
+const Body = ({ showDateCard, showLogin }) => {
 	let display;
 
 	if (showDateCard) {
