@@ -1,15 +1,12 @@
 import React from 'react';
-import Menu from './Menu';
+import NavMenu from './NavMenu';
 import { Spacer, HStack, VStack, Box, Heading, Button, Show } from '@chakra-ui/react';
+import { BsPersonCircle } from 'react-icons/bs';
 
 const Header = ({ setShowLogin }) => {
-	let showLogin = () => {
-		setShowLogin(true);
-	};
-
 	return (
 		<Box w='100%' mt='5'>
-			<HStack id='headerContainer' justify='space-between' mt='5%' textTransform='lowercase'>
+			<HStack id='headerContainer' justify='space-between' mt='5%' textTransform='lowercase' className='text'>
 				<VStack align='flex-start' px='2'>
 					<Heading as='h1' lineHeight='60%'>
 						date app
@@ -24,10 +21,10 @@ const Header = ({ setShowLogin }) => {
 					</Heading>
 				</VStack>
 				<Spacer />
-				<Menu />
-				<Button as='btn' variant='outline' size='md' colorScheme='gray' borderRadius='50' onClick={showLogin}>
+				<NavMenu setShowLogin={setShowLogin} />
+				{/* <Button as='btn' variant='outline' size='md' colorScheme='gray' borderRadius='10' onClick={showLogin}>
 					Login
-				</Button>
+				</Button> */}
 			</HStack>
 		</Box>
 	);

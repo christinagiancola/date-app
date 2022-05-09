@@ -30,7 +30,7 @@ const LoginModal = () => {
 	}, [loginData]);
 
 	return (
-		<Container maxW='sm' py='12' borderRadius='25' id='login-form'>
+		<Container w='md' py='12' borderRadius='25' id='login-form'>
 			<form onSubmit={handleSubmit(onSubmit)} className='login-form'>
 				<Input id='name' bg='white' my='1' width='85%' type='text' placeholder='name' {...register('userName')} />
 				<Input id='email' bg='white' my='1' width='85%' type='text' placeholder='email' {...register('email')} />

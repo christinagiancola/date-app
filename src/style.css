@@ -1,8 +1,8 @@
 :root {
-	--text-color-main: black;
-	--date-card-bg-color: #f9f3b5;
-	--login-card-bg-color: #b0aa00cd;
+	--text-color-main: rgb(0, 0, 0);
+	--date-card-bg-color: #a3dbf1bd;
 	--login-btn-color: #f9f3b5;
+	--login-card-bg-color: #b0aa00cd;
 }
 
 .outline {
@@ -11,6 +11,14 @@
 
 .text {
 	color: var(--text-color-main);
+}
+
+.button {
+	background-color: white;
+}
+
+.centered {
+	text-align: center;
 }
 
 /* ===== HEADER ===== */
@@ -23,9 +31,9 @@ span.line {
 
 #date-card {
 	background-color: var(--date-card-bg-color);
-	opacity: 0.7;
-	background-image: radial-gradient(#b0aa00cd 0.75px, var(--date-card-bg-color) 0.75px);
-	background-size: 15px 15px;
+	opacity: 1;
+	/* background-image: radial-gradient(rgb(187, 174, 0) 0.75px, var(--date-card-bg-color) 0.75px);
+	background-size: 15px 15px; */
 }
 
 /* ===== LOGIN MODAL ===== */
