@@ -15,7 +15,7 @@ const Body = ({ showDateCard, showLogin }) => {
 	}
 
 	return (
-		<Flex id='bodyContainer' w='100%' my='5' py='3' justify='center'>
+		<Flex id='bodyContainer' w='100%' justify='center'>
 			{display}
 		</Flex>
 	);

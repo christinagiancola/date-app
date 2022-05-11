@@ -7,14 +7,16 @@ import Footer from './components/Footer';
 
 const App = () => {
 	const [showDateCard, setShowDateCard] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
 	return (
-		<Container maxW='90%' centerContent>
-			<Stack h='calc(100vh)'>
-				<Box>
-					<Header setShowLogin={setShowLogin} />
+		<Container maxW='90%'>
+			<Stack h='calc(100vh)' w='100%' className='outline' align='center'>
+				<Header setShowLogin={setShowLogin} />
+				<Spacer />
+				<div>
 					<Body showDateCard={showDateCard} showLogin={showLogin} />
-				</Box>
+				</div>
 				<Spacer />
 				<Footer />
 			</Stack>

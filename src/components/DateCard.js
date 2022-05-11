@@ -4,7 +4,7 @@ import { BsCalendarPlus } from 'react-icons/bs';
 
 const DateCard = () => {
 	return (
-		<Container maxW='md' borderRadius='15' centerContent id='date-card' mt='10'>
+		<Container maxW='md' borderRadius='15' centerContent id='date-card'>
 			<Flex justify='center' align='center' direction='column' textTransform='lowercase' className='text' my='3'>
 				<Heading as='h3' size='lg' mt='5'>
 					take hazel to the dog park
