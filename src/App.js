@@ -11,7 +11,7 @@ const App = () => {
 	const [showLogin, setShowLogin] = useState(false);
 	return (
 		<Container maxW='90%'>
-			<Stack h='calc(100vh)' w='100%' className='outline' align='center'>
+			<Stack h='calc(100vh)' w='100%' align='center'>
 				<Header setShowLogin={setShowLogin} />
 				<Spacer />
 				<div>
