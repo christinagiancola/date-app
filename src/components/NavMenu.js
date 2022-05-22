@@ -13,13 +13,9 @@ const NavMenu = ({ setShowLogin }) => {
 	return (
 		<HStack as='nav' className='text'>
 			<Menu>
-				<MenuButton
-					as={IconButton}
-					aria-label='Navigation Menu'
-					icon={<BsList />}
-					variant='outline'
-					borderRadius='10'
-				/>
+				<MenuButton as={Button} aria-label='Navigation Menu' leftIcon={<BsList />} variant='outline' borderRadius='10'>
+					Menu
+				</MenuButton>
 				<MenuList>
 					<MenuItem icon={<BsFillHouseFill />}>Home</MenuItem>
 					<MenuItem icon={<BsPlusSquare />}>Add New Date</MenuItem>

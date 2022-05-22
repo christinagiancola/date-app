@@ -26,6 +26,7 @@ const Header = ({ setShowLogin }) => {
 				</VStack>
 				<Spacer />
 				<NavMenu setShowLogin={setShowLogin} />
+				<Button leftIcon={<BsPersonCircle />}>Login</Button>
 				<IconButton
 					variant='outline'
 					aria-label='User Login and Logout'
