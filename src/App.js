@@ -10,7 +10,7 @@ const App = () => {
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	return (
-		<Container maxW='90%'>
+		<Container maxW='100%'>
 			<Stack h='calc(100vh)' w='100%' align='center'>
 				<Header setLastClicked={setLastClicked} />
 				<Spacer />
