@@ -6,16 +6,16 @@ import Footer from './components/Footer';
 // import theme from './theme';
 
 const App = () => {
-	const [showDateCard, setShowDateCard] = useState(true);
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [showLogin, setShowLogin] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 	return (
 		<Container maxW='90%'>
 			<Stack h='calc(100vh)' w='100%' align='center'>
 				<Header setShowLogin={setShowLogin} />
 				<Spacer />
 				<div>
-					<Body showDateCard={showDateCard} showLogin={showLogin} />
+					<Body showLogin={showLogin} />
 				</div>
 				<Spacer />
 				<Footer />

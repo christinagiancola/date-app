@@ -1,17 +1,28 @@
 import React, { useState } from 'react';
 import DateCard from './DateCard';
+import DateForm from './DateForm';
 import LoginModal from './LoginModal';
+import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
 
-const Body = ({ showDateCard, showLogin }) => {
-	let display;
+const Body = ({ showLogin }) => {
+	const [lastClicked, setLastClicked] = useState('');
+	let display = 'home';
 
-	if (showDateCard) {
+	if (lastClicked === 'home') {
 		display = <DateCard />;
 	}
 
-	if (showLogin) {
+	if (lastClicked === 'login') {
 		display = <LoginModal />;
+	}
+
+	if (lastClicked === 'new-date') {
+		display = <DateForm />;
+	}
+
+	if (lastClicked === 'date-library') {
+		display = <DateLibrary />;
 	}
 
 	return (

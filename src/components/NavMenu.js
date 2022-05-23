@@ -9,7 +9,7 @@ import {
 	BsPersonDashFill,
 } from 'react-icons/bs';
 
-const NavMenu = ({ setShowLogin }) => {
+const NavMenu = () => {
 	return (
 		<HStack as='nav' className='text'>
 			<Menu>
@@ -17,9 +17,25 @@ const NavMenu = ({ setShowLogin }) => {
 					Menu
 				</MenuButton>
 				<MenuList>
-					<MenuItem icon={<BsFillHouseFill />}>Home</MenuItem>
-					<MenuItem icon={<BsPlusSquare />}>Add New Date</MenuItem>
-					<MenuItem icon={<BsFillPencilFill />}>Edit Dates</MenuItem>
+					<MenuItem icon={<BsFillHouseFill />} onClick={() => setShowHome(true)}>
+						Home
+					</MenuItem>
+					<MenuItem
+						icon={<BsPlusSquare />}
+						onClick={() => {
+							setShowNewDateForm(true);
+						}}
+					>
+						Add New Date
+					</MenuItem>
+					<MenuItem
+						icon={<BsFillPencilFill />}
+						onClick={() => {
+							setShowDateLibrary(true);
+						}}
+					>
+						Edit Dates
+					</MenuItem>
 					<MenuItem icon={<BsPersonDashFill />}>User Logout</MenuItem>
 				</MenuList>
 			</Menu>
