@@ -9,7 +9,7 @@ import {
 	BsPersonDashFill,
 } from 'react-icons/bs';
 
-const NavMenu = () => {
+const NavMenu = ({ setLastClicked }) => {
 	return (
 		<HStack as='nav' className='text'>
 			<Menu>
@@ -17,13 +17,13 @@ const NavMenu = () => {
 					Menu
 				</MenuButton>
 				<MenuList>
-					<MenuItem icon={<BsFillHouseFill />} onClick={() => setShowHome(true)}>
+					<MenuItem icon={<BsFillHouseFill />} onClick={() => setLastClicked('home')}>
 						Home
 					</MenuItem>
 					<MenuItem
 						icon={<BsPlusSquare />}
 						onClick={() => {
-							setShowNewDateForm(true);
+							setLastClicked('new-date');
 						}}
 					>
 						Add New Date
@@ -31,7 +31,7 @@ const NavMenu = () => {
 					<MenuItem
 						icon={<BsFillPencilFill />}
 						onClick={() => {
-							setShowDateLibrary(true);
+							setLastClicked('date-library');
 						}}
 					>
 						Edit Dates

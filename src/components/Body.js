@@ -5,9 +5,8 @@ import LoginModal from './LoginModal';
 import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
 
-const Body = ({ showLogin }) => {
-	const [lastClicked, setLastClicked] = useState('');
-	let display = 'home';
+const Body = ({ lastClicked }) => {
+	let display;
 
 	if (lastClicked === 'home') {
 		display = <DateCard />;

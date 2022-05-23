@@ -3,7 +3,7 @@ import NavMenu from './NavMenu';
 import { Spacer, HStack, VStack, Box, Heading, Button, Show, IconButton } from '@chakra-ui/react';
 import { BsPersonCircle } from 'react-icons/bs';
 
-const Header = ({ setShowLogin, setShowDateCard, setShowNewDateForm, setShowDateLibrary, setShowHome }) => {
+const Header = ({ setLastClicked }) => {
 	return (
 		<Box w={{ base: '100%', md: '70%', lg: '60%', xl: '45%' }} p='25px' bg='blue.100'>
 			<HStack id='headerContainer' justify='space-between' textTransform='lowercase' className='text'>
@@ -25,13 +25,8 @@ const Header = ({ setShowLogin, setShowDateCard, setShowNewDateForm, setShowDate
 					</Heading>
 				</VStack>
 				<Spacer />
-				<NavMenu
-					setShowDateCard={setShowDateCard}
-					setShowNewDateForm={setShowNewDateForm}
-					setShowDateLibrary={setShowDateLibrary}
-					setShowHome={setShowHome}
-				/>
-				<Button leftIcon={<BsPersonCircle />} onClick={() => setShowLogin(true)}>
+				<NavMenu setLastClicked={setLastClicked} />
+				<Button leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
 					Login
 				</Button>
 				<IconButton
@@ -39,7 +34,7 @@ const Header = ({ setShowLogin, setShowDateCard, setShowNewDateForm, setShowDate
 					aria-label='User Login and Logout'
 					icon={<BsPersonCircle />}
 					borderRadius='10'
-					onClick={() => setShowLogin(true)}
+					onClick={() => setLastClicked('login')}
 				/>
 			</HStack>
 		</Box>
