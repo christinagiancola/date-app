@@ -8,6 +8,8 @@ import { Flex } from '@chakra-ui/react';
 const Body = ({ lastClicked }) => {
 	let display;
 
+	// TODO: swap out repeated code for switch statement
+
 	if (lastClicked === 'home') {
 		display = <DateCard />;
 	}
