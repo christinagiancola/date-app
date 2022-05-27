@@ -36,7 +36,9 @@ const NavMenu = ({ setLastClicked }) => {
 					>
 						Edit Dates
 					</MenuItem>
-					<MenuItem icon={<BsPersonDashFill />}>User Logout</MenuItem>
+					<MenuItem icon={<BsPersonDashFill />} onClick={() => setLastClicked('login')}>
+						User Logout
+					</MenuItem>
 				</MenuList>
 			</Menu>
 		</HStack>
