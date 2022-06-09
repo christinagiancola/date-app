@@ -4,13 +4,13 @@ import { BsCalendarPlus } from 'react-icons/bs';
 
 const DateCard = () => {
 	const date = {
-		id: 1,
-		name: 'take hazel to the dog park',
+		id: 4,
+		name: 'get sushi',
 		repeating: true,
-		budgetInDollars: 0,
-		timeOfDay: ['morning', 'afternoon'],
-		dayOfWeek: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-		petFriendly: true,
+		budgetInDollars: 30,
+		timeOfDay: ['evening'],
+		dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+		petFriendly: false,
 	};
 
 	return (
