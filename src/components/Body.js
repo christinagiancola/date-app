@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import DateGenerator from './DateGenerator';
 import DateCard from './DateCard';
 import DateForm from './DateForm';
 import LoginModal from './LoginModal';
@@ -11,7 +12,7 @@ const Body = ({ lastClicked }) => {
 	// TODO: swap out repeated code for switch statement
 
 	if (lastClicked === 'home') {
-		display = <DateCard />;
+		display = <DateGenerator />;
 	}
 
 	if (lastClicked === 'login') {

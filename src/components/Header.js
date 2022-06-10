@@ -12,12 +12,12 @@ const Header = ({ setLastClicked, appName }) => {
 						{appName}
 					</Heading>
 					<Heading as='h2' size='md'>
-						<span class='line'>
+						<span className='line'>
 							<Heading as='h3' size='md'>
 								less planning,&nbsp;
 							</Heading>
 						</span>
-						<span class='line'>
+						<span className='line'>
 							<Heading as='h3' size='md'>
 								more doing
 							</Heading>
