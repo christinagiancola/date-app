@@ -8,17 +8,18 @@ import Footer from './components/Footer';
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const appName = 'date app';
 
 	return (
 		<Container maxW='100%'>
 			<Stack h='calc(100vh)' w='100%' align='center'>
-				<Header setLastClicked={setLastClicked} />
+				<Header setLastClicked={setLastClicked} appName={appName} />
 				<Spacer />
 				<div>
-					<Body lastClicked={lastClicked} />
+					<Body lastClicked={lastClicked} appName={appName} />
 				</div>
 				<Spacer />
-				<Footer />
+				<Footer appName={appName} />
 			</Stack>
 		</Container>
 	);
