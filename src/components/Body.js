@@ -12,7 +12,10 @@ const Body = ({ lastClicked }) => {
 	// TODO: swap out repeated code for switch statement
 
 	if (lastClicked === 'home') {
-		display = <DateGenerator />;
+		// console.log(getHealthCheck());
+		// display = <DateCard />;
+		// display = <DateGenerator />;
+		display = <DateLibrary />;
 	}
 
 	if (lastClicked === 'login') {
