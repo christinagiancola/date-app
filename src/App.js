@@ -1,14 +1,19 @@
 import { Container, Stack, Spacer, Box } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
+import healthCheck from './service/client_functions';
 // import theme from './theme';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const appName = 'date app';
+
+	useEffect(() => {
+		healthCheck();
+	}, []);
 
 	return (
 		<Container maxW='100%'>

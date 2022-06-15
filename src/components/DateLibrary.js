@@ -6,7 +6,7 @@ const DateLibrary = () => {
 	let dateLibrary = dates.map((date, i) => {
 		// TODO add badges with conditional rendering statements (repeating, pet friendly, etc)
 		return (
-			<Box maxW='sm' borderWidth='1px' borderRadius='15px' p='6' align='center'>
+			<Box key={i} maxW='sm' borderWidth='1px' borderRadius='15px' p='6' align='center'>
 				<Heading as='h5' size='md' key={i}>
 					{date.name}
 				</Heading>
