@@ -69,7 +69,7 @@ const DateForm = () => {
 				</FormControl>
 				<FormControl>
 					<FormLabel htmlFor='repeat'>Repeating?</FormLabel>
-					<RadioGroup id='repeat' {...register('repeating')}>
+					<RadioGroup id='repeat' {...register('repeat')}>
 						<HStack>
 							<Radio value='yes'>Yes</Radio>
 							<Radio value='no'>No</Radio>

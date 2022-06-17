@@ -9,13 +9,10 @@ import { Flex } from '@chakra-ui/react';
 const Body = ({ lastClicked }) => {
 	let display;
 
-	// TODO: swap out repeated code for switch statement
+	// TODO: swap out repeated code for switch statement?
 
 	if (lastClicked === 'home') {
-		// console.log(getHealthCheck());
-		// display = <DateCard />;
-		// display = <DateGenerator />;
-		display = <DateLibrary />;
+		display = <DateGenerator />;
 	}
 
 	if (lastClicked === 'login') {
