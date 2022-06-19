@@ -1,58 +1,69 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
 import {
 	Container,
 	FormControl,
 	FormLabel,
 	Input,
-	PasswordField,
-	Text,
-	HStack,
+	InputGroup,
+	InputRightElement,
 	Button,
 	FormHelperText,
 	FormErrorMessage,
 } from '@chakra-ui/react';
 
 const LoginModal = () => {
-	const [input, setInput] = useState('');
-	const [loginData, setLoginData] = useState();
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-	} = useForm();
+	const [emailAddress, setEmailAddress] = useState('');
+	const [password, setPassword] = useState('');
+	const [showPassword, setShowPassword] = useState(false);
+	const isInvalid = password === '' || emailAddress === '';
 
-	// const handleInputChange = (e) => setInput(e.target.value);
-	const onSubmit = (data) => setLoginData(data);
-
-	useEffect(() => {
-		console.log(loginData);
-	}, [loginData]);
+	const handleSignIn = (e) => {
+		e.preventDefault();
+		console.log('login form submitted');
+		console.log('emailAddress', emailAddress);
+		console.log('password', password);
+	};
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form'>
-			<form onSubmit={handleSubmit(onSubmit)} className='login-form'>
-				<Input id='name' bg='white' my='1' width='85%' type='text' placeholder='name' {...register('userName')} />
-				<Input id='email' bg='white' my='1' width='85%' type='text' placeholder='email' {...register('email')} />
-				<Input
-					id='password'
-					bg='white'
-					my='1'
-					width='85%'
-					type='password'
-					placeholder='password'
-					{...register('password')}
-				/>
-				<Input color='white' width='85%' my='3' type='submit' id='login-btn' />
+			<form method='POST' onSubmit={handleSignIn}>
+				<Stack margin='auto' spacing={5} mt={5}>
+					<FormControl>
+						<FormLabel htmlFor='email'>Email Address:</FormLabel>
+						<Input
+							isRequired
+							type='email'
+							id='email'
+							aria-describedby='email-helper-text'
+							value={emailAddress}
+							onChange={({ target }) => setEmailAddress(target.value)}
+						></Input>
+						{/* <FormHelperText id='email-helper-text'>We'll never share your email.</FormHelperText> */}
+					</FormControl>
+					<FormControl>
+						<FormLabel htmlFor='email'>Password:</FormLabel>
+						<InputGroup>
+							<Input
+								isRequired
+								type={showPassword ? 'text' : 'password'}
+								id='password'
+								aria-describedby='password-helper-text'
+								value={password}
+								onChange={({ target }) => setPassword(target.value)}
+							></Input>
+							<InputRightElement w='4.5rem'>
+								<Button size='sm' onClick={() => setShowPassword(!showPassword)}></Button>
+							</InputRightElement>
+						</InputGroup>
+						{/* <FormHelperText id='password-helper-text'>Pick a good one!</FormHelperText> */}
+					</FormControl>
+					<FormControl>
+						<Button type='submit' varientColor='blue' disabled={isInvalid}>
+							Sign In
+						</Button>
+					</FormControl>
+				</Stack>
 			</form>
-			<HStack spacing='1' justify='center'>
-				<Text color='muted' my='s'>
-					Don't have an account?
-				</Text>
-				<Button variant='link' colorScheme='blue'>
-					Sign up
-				</Button>
-			</HStack>
 		</Container>
 	);
 };
