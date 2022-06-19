@@ -1,20 +1,27 @@
 [
 	{
 		"id": 1,
+		"public": true,
+		"owner": "tinadabomb42069",
+		"createdBy": "tinadabomb42069",
 		"name": "take hazel to the dog park",
+		"details": "and get a pup cup on the way home",
 		"location": "rockwood park",
-		"repeating": true,
-		"budgetInDollars": 0,
-		"timeOfDay": ["morning", "afternoon"],
-		"dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-		"petFriendly": true
+		"gMapReference": "https://goo.gl/maps/BWzsQH1JKpfu9C9C9",
+		"repeatable": true,
+		"timeOfDay": ["morning", "afternoon", "evening"],
+		"overnight": false,
+		"weekend": true,
+		"weekday": true,
+		"estimatedCost": 0,
+		"petFriendly": true,
+		"expires": "2012-04-23T18:25:43.511Z"
 	},
 	{
 		"id": 2,
 		"name": "get ice cream from scoops",
 		"location": "scoop",
 		"repeating": true,
-		"budgetInDollars": 15,
 		"timeOfDay": ["afternoon", "evening"],
 		"dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 		"petFriendly": false
@@ -24,7 +31,6 @@
 		"name": "take a pottery class",
 		"location": "hand thrown",
 		"repeating": false,
-		"budgetInDollars": 50,
 		"timeOfDay": ["evening"],
 		"dayOfWeek": ["Wednesday", "Thursday", "Friday", "Saturday"],
 		"petFriendly": false
@@ -42,9 +48,16 @@
 		"id": 5,
 		"name": "movie night",
 		"repeating": true,
-		"budgetInDollars": 0,
 		"timeOfDay": ["evening"],
 		"dayOfWeek": ["Thursday", "Friday", "Saturday", "Sunday"],
+		"petFriendly": true
+	},
+	{
+		"id": 6,
+		"name": "go camping",
+		"repeating": true,
+		"timeOfDay": ["overnight"],
+		"dayOfWeek": ["Friday", "Saturday", "Sunday"],
 		"petFriendly": true
 	}
 ]
