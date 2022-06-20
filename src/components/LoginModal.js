@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
 	Container,
+	Stack,
 	FormControl,
 	FormLabel,
 	Input,
@@ -34,7 +35,8 @@ const LoginModal = () => {
 							isRequired
 							type='email'
 							id='email'
-							aria-describedby='email-helper-text'
+							// aria-describedby='email-helper-text'
+							placeholder='yourname@gmail.com'
 							value={emailAddress}
 							onChange={({ target }) => setEmailAddress(target.value)}
 						></Input>
@@ -47,18 +49,22 @@ const LoginModal = () => {
 								isRequired
 								type={showPassword ? 'text' : 'password'}
 								id='password'
-								aria-describedby='password-helper-text'
+								placeholder='password'
+								variant='outline'
+								// aria-describedby='password-helper-text'
 								value={password}
 								onChange={({ target }) => setPassword(target.value)}
 							></Input>
 							<InputRightElement w='4.5rem'>
-								<Button size='sm' onClick={() => setShowPassword(!showPassword)}></Button>
+								<Button size='sm' onClick={() => setShowPassword(!showPassword)}>
+									Show
+								</Button>
 							</InputRightElement>
 						</InputGroup>
 						{/* <FormHelperText id='password-helper-text'>Pick a good one!</FormHelperText> */}
 					</FormControl>
 					<FormControl>
-						<Button type='submit' varientColor='blue' disabled={isInvalid}>
+						<Button type='submit' disabled={isInvalid}>
 							Sign In
 						</Button>
 					</FormControl>
