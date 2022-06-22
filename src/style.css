@@ -2,9 +2,9 @@
 
 :root {
 	--text-color-main: rgb(0, 0, 0);
-	--date-card-bg-color: #ffffffbd;
-	--login-btn-color: #f9f3b5;
-	--login-card-bg-color: #b0aa00cd;
+	--date-card-bg-color: #ffffff;
+	--login-btn-color: #c2b525;
+	--login-card-bg-color: #ffffff;
 }
 
 .outline {

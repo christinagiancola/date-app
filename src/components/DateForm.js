@@ -40,7 +40,7 @@ const DateForm = () => {
 	}
 
 	return (
-		<Box>
+		<Box align='center'>
 			<form method='POST' onSubmit={handleSubmit}>
 				<FormControl>
 					<FormLabel htmlFor='name'>Date Idea:</FormLabel>
@@ -147,6 +147,7 @@ const DateForm = () => {
 						<FormLabel htmlFor='expirationDate'>Expiration Date:</FormLabel>
 						<DatePicker
 							id='expirationDate'
+							isClearable
 							showPopperArrow={true}
 							selected={expirationDate}
 							onChange={(date) => setExpirationDate(date)}

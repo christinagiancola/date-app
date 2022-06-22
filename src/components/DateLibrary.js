@@ -10,16 +10,6 @@ const DateLibrary = () => {
 				<Heading as='h5' size='md' key={i}>
 					{date.name}
 				</Heading>
-				{date.petFriendly ? (
-					<Badge borderRadius='15px' px='3' py='1' mt='3'>
-						Pet Friendly
-					</Badge>
-				) : null}
-				{date.dayOfWeek.length === 7 ? (
-					<Badge borderRadius='15px' px='3' py='1' mt='3'>
-						Any Day
-					</Badge>
-				) : null}
 			</Box>
 		);
 	});

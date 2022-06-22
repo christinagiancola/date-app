@@ -26,7 +26,7 @@ const LoginModal = () => {
 	};
 
 	return (
-		<Container w='md' py='12' borderRadius='25' id='login-form'>
+		<Container w='md' py='12' borderRadius='25' id='login-form' align='center'>
 			<form method='POST' onSubmit={handleSignIn}>
 				<Stack margin='auto' spacing={5} mt={5}>
 					<FormControl>
