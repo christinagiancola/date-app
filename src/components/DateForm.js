@@ -19,6 +19,7 @@ import {
 	Select,
 	Switch,
 } from '@chakra-ui/react';
+import { addNewDate } from '../service/client_functions';
 
 const DateForm = () => {
 	const [name, setName] = useState('');
@@ -34,8 +35,11 @@ const DateForm = () => {
 	const [doesExpire, setDoesExpire] = useState(false);
 	const [expirationDate, setExpirationDate] = useState(new Date());
 
+	let testDate = {};
+
 	function handleSubmit(e) {
 		e.preventDefault();
+		addNewDate(testDate);
 		console.log('date form submitted');
 	}
 

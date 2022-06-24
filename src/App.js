@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
-import healthCheck from './service/client_functions';
+import { healthCheck } from './service/client_functions';
 // import theme from './theme';
 
 const App = () => {
