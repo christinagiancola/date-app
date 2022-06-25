@@ -39,17 +39,25 @@ const DateForm = () => {
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		addNewDate(testDate);
-		console.log('date form submitted');
+		// addNewDate(testDate);
+		console.log('date form submitted', newDateForm);
+    const 
 	}
 
 	return (
 		<Box align='center'>
-			<form method='POST' onSubmit={handleSubmit}>
+			<form method='POST' onSubmit={handleSubmit} id='newDateForm'>
 				<FormControl>
 					<FormLabel htmlFor='name'>Date Idea:</FormLabel>
 					<InputGroup>
-						<Input isRequired type='text' id='name' value={name} onChange={({ target }) => setName(target.value)} />
+						<Input
+							isRequired
+							type='text'
+							id='name'
+							name='name'
+							value={name}
+							onChange={({ target }) => setName(target.value)}
+						/>
 					</InputGroup>
 				</FormControl>
 
