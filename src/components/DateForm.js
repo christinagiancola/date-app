@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import {
-	Container,
 	Stack,
 	Box,
 	Button,
@@ -11,12 +10,10 @@ import {
 	FormErrorMessage,
 	Input,
 	InputGroup,
-	InputRightElement,
 	Checkbox,
 	CheckboxGroup,
 	Radio,
 	RadioGroup,
-	Select,
 	Switch,
 } from '@chakra-ui/react';
 import { addNewDate } from '../service/client_functions';
@@ -30,18 +27,24 @@ const DateForm = () => {
 	const [isOvernight, setIsOvernight] = useState(false);
 	const [isOnWeekday, setIsOnWeekday] = useState(false);
 	const [isOnWeekend, setIsOnWeekend] = useState(false);
-	const [cost, setCost] = useState(0);
-	const [isPetFriendly, setIsPetFriendly] = useState(false);
 	const [doesExpire, setDoesExpire] = useState(false);
 	const [expirationDate, setExpirationDate] = useState(new Date());
-
-	let testDate = {};
+	// const [cost, setCost] = useState(0);
+	// const [isPetFriendly, setIsPetFriendly] = useState(false);
 
 	function handleSubmit(e) {
 		e.preventDefault();
-		// addNewDate(testDate);
-		console.log('date form submitted', newDateForm);
-    const 
+		const formData = new FormData(document.getElementById('newDateForm'));
+		formData.set('timeOfDay', timeOfDay);
+		formData.set('isOnWeekday', isOnWeekday);
+		formData.set('isOnWeekend', isOnWeekend);
+		formData.set('isRepeatable', isRepeatable);
+		formData.set('isOvernight', isOvernight);
+		let dateObj = {};
+		formData.forEach((value, key) => (dateObj[key] = value));
+		var dateJson = JSON.stringify(dateObj);
+		console.log(dateJson);
+		addNewDate(dateJson);
 	}
 
 	return (
@@ -64,7 +67,13 @@ const DateForm = () => {
 				<FormControl mt='15px'>
 					<FormLabel htmlFor='details'>Any extra details?</FormLabel>
 					<InputGroup>
-						<Input type='text' id='details' value={details} onChange={({ target }) => setDetails(target.value)}></Input>
+						<Input
+							type='text'
+							id='details'
+							name='details'
+							value={details}
+							onChange={({ target }) => setDetails(target.value)}
+						></Input>
 					</InputGroup>
 				</FormControl>
 
@@ -74,6 +83,7 @@ const DateForm = () => {
 						<Input
 							type='text'
 							id='location'
+							name='location'
 							value={location}
 							onChange={({ target }) => setLocation(target.value)}
 						></Input>
@@ -84,13 +94,40 @@ const DateForm = () => {
 					<FormLabel htmlFor='timeOfDay'>What time of day?</FormLabel>
 					<CheckboxGroup id='timeOfDay'>
 						<Stack direction='row'>
-							<Checkbox value='morning' mr='10px' onChange={({ target }) => setTimeOfDay(target.value)}>
+							<Checkbox
+								mr='10px'
+								name='timeOfDay'
+								value='morning'
+								onChange={({ target }) =>
+									target.checked
+										? setTimeOfDay([...timeOfDay, 'morning'])
+										: setTimeOfDay(timeOfDay.filter((x) => x !== 'morning'))
+								}
+							>
 								Morning
 							</Checkbox>
-							<Checkbox value='afternoon' mr='10px' onChange={({ target }) => setTimeOfDay(target.value)}>
+							<Checkbox
+								mr='10px'
+								name='timeOfDay'
+								value='afternoon'
+								onChange={({ target }) =>
+									target.checked
+										? setTimeOfDay([...timeOfDay, 'afternoon'])
+										: setTimeOfDay(timeOfDay.filter((x) => x !== 'afternoon'))
+								}
+							>
 								Afternoon
 							</Checkbox>
-							<Checkbox value='evening' mr='10px' onChange={({ target }) => setTimeOfDay(target.value)}>
+							<Checkbox
+								name='timeOfDay'
+								value='evening'
+								mr='10px'
+								onChange={({ target }) =>
+									target.checked
+										? setTimeOfDay([...timeOfDay, 'evening'])
+										: setTimeOfDay(timeOfDay.filter((x) => x !== 'evening'))
+								}
+							>
 								Evening
 							</Checkbox>
 						</Stack>
@@ -100,7 +137,12 @@ const DateForm = () => {
 				<FormControl mt='15px'>
 					<Stack direction='row'>
 						<FormLabel htmlFor='isRepeatable'>Is the date repeatable?</FormLabel>
-						<Switch id='isRepeatable' onChange={() => setIsRepeatable(!isRepeatable)} />
+						<Switch
+							name='isRepeatable'
+							id='isRepeatable'
+							value={isRepeatable}
+							onChange={({ target }) => (target.checked ? setIsRepeatable(true) : setIsRepeatable(false))}
+						/>
 					</Stack>
 				</FormControl>
 
@@ -109,7 +151,12 @@ const DateForm = () => {
 						<FormLabel htmlFor='isOvernight' defaultValue='false'>
 							Pack an overnight bag?
 						</FormLabel>
-						<Switch id='isOvernight' size='md' onChange={() => setIsOvernight(!isOvernight)} />
+						<Switch
+							name='isOvernight'
+							id='isOvernight'
+							value={isOvernight}
+							onChange={({ target }) => (target.checked ? setIsOvernight(true) : setIsOvernight(false))}
+						/>
 					</Stack>
 				</FormControl>
 
@@ -117,10 +164,18 @@ const DateForm = () => {
 					<FormLabel htmlFor='dayOfWeek'>What Days of the Week?</FormLabel>
 					<CheckboxGroup id='dayOfWeek'>
 						<Stack direction='row'>
-							<Checkbox value='weekday' onChange={() => setIsOnWeekday(!isOnWeekday)}>
+							<Checkbox
+								// name='dayOfWeek'
+								value='weekday'
+								onChange={({ target }) => (target.checked ? setIsOnWeekday(true) : setIsOnWeekday(false))}
+							>
 								Weekday
 							</Checkbox>
-							<Checkbox value='weekend' onChange={() => setIsOnWeekend(!isOnWeekend)}>
+							<Checkbox
+								// name='dayOfWeek'
+								value='weekend'
+								onChange={({ target }) => (target.checked ? setIsOnWeekend(true) : setIsOnWeekend(false))}
+							>
 								Weekend
 							</Checkbox>
 						</Stack>
@@ -131,16 +186,16 @@ const DateForm = () => {
 					<FormLabel htmlFor='cost'>What's the estimated budget?</FormLabel>
 					<Stack direction='row'>
 						<RadioGroup id='cost'>
-							<Radio value='0' mr='10px'>
+							<Radio name='cost' value='0' mr='10px'>
 								Free
 							</Radio>
-							<Radio value='1' mr='10px'>
+							<Radio name='cost' value='1' mr='10px'>
 								$
 							</Radio>
-							<Radio value='2' mr='10px'>
+							<Radio name='cost' value='2' mr='10px'>
 								$$
 							</Radio>
-							<Radio value='3' mr='10px'>
+							<Radio name='cost' value='3' mr='10px'>
 								$$$
 							</Radio>
 						</RadioGroup>
@@ -150,7 +205,12 @@ const DateForm = () => {
 				<FormControl mt='15px'>
 					<Stack direction='row'>
 						<FormLabel htmlFor='doesExpire'>Does this date idea expire?</FormLabel>
-						<Switch id='doesExpire' size='md' onChange={() => setDoesExpire(!doesExpire)} />
+						<Switch
+							name='doesExpire'
+							id='doesExpire'
+							value={doesExpire}
+							onChange={({ target }) => (target.checked ? setDoesExpire(true) : setDoesExpire(false))}
+						/>
 					</Stack>
 				</FormControl>
 
@@ -158,6 +218,7 @@ const DateForm = () => {
 					<FormControl>
 						<FormLabel htmlFor='expirationDate'>Expiration Date:</FormLabel>
 						<DatePicker
+							name='expirationDate'
 							id='expirationDate'
 							isClearable
 							showPopperArrow={true}

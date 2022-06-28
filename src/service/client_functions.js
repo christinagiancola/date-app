@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const axiosInstance = axios.create({
 	baseURL: 'https://ehwumue3sd.execute-api.us-east-1.amazonaws.com/Mock',
+	headers: { 'Content-Type': 'application/json' },
 });
 
 const healthCheck = () => {
