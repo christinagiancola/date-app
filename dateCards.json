@@ -10,14 +10,15 @@
 		"details": "and get a pup cup on the way home",
 		"location": "rockwood park",
 		"gMapReference": "https://goo.gl/maps/BWzsQH1JKpfu9C9C9",
-		"repeatable": true,
+		"isRepeatable": true,
 		"timeOfDay": ["morning", "afternoon", "evening"],
-		"overnight": false,
-		"weekend": true,
-		"weekday": true,
+		"isOvernight": false,
+		"isOnWeekend": true,
+		"isOnWeekday": true,
 		"estimatedCost": 0,
 		"petFriendly": true,
-		"expires": "2012-04-23T18:25:43.511Z"
+		"expires": true,
+		"expirationDate": "2012-04-23T18:25:43.511Z"
 	},
 	{
 		"id": 2,

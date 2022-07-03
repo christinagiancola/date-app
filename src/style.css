@@ -7,6 +7,10 @@
 	--login-card-bg-color: #ffffff;
 }
 
+* {
+	/* outline: 1px solid RED; */
+}
+
 .outline {
 	outline: 1px solid RED;
 }

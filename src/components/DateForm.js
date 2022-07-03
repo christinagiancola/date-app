@@ -30,20 +30,22 @@ const DateForm = () => {
 	const [doesExpire, setDoesExpire] = useState(false);
 	const [expirationDate, setExpirationDate] = useState(new Date());
 	// const [cost, setCost] = useState(0);
-	// const [isPetFriendly, setIsPetFriendly] = useState(false);
+	const [isPetFriendly, setIsPetFriendly] = useState(false);
 
 	function handleSubmit(e) {
 		e.preventDefault();
 		const formData = new FormData(document.getElementById('newDateForm'));
-		formData.set('timeOfDay', timeOfDay);
-		formData.set('isOnWeekday', isOnWeekday);
-		formData.set('isOnWeekend', isOnWeekend);
-		formData.set('isRepeatable', isRepeatable);
-		formData.set('isOvernight', isOvernight);
 		let dateObj = {};
 		formData.forEach((value, key) => (dateObj[key] = value));
+		dateObj['timeOfDay'] = timeOfDay;
+		dateObj['isOnWeekday'] = isOnWeekday;
+		dateObj['isOnWeekend'] = isOnWeekend;
+		dateObj['isRepeatable'] = isRepeatable;
+		dateObj['isOvernight'] = isOvernight;
+		dateObj['isPetFriendly'] = isPetFriendly;
 		var dateJson = JSON.stringify(dateObj);
-		console.log(dateJson);
+		console.log('dateJson:', dateJson);
+		console.log('dateObj', dateObj);
 		addNewDate(dateJson);
 	}
 
@@ -91,6 +93,21 @@ const DateForm = () => {
 				</FormControl>
 
 				<FormControl mt='15px'>
+					<Stack direction='row' align='center'>
+						<FormLabel htmlFor='isPetFriendly' defaultValue='false' pt='2%'>
+							Is the location dog friendly?
+						</FormLabel>
+						<Switch
+							name='isPetFriendly'
+							id='isPetFriendly'
+							// size='sm'
+							value={isPetFriendly}
+							onChange={({ target }) => (target.checked ? setIsPetFriendly(true) : setIsPetFriendly(false))}
+						/>
+					</Stack>
+				</FormControl>
+
+				<FormControl mt='15px'>
 					<FormLabel htmlFor='timeOfDay'>What time of day?</FormLabel>
 					<CheckboxGroup id='timeOfDay'>
 						<Stack direction='row'>
@@ -135,11 +152,14 @@ const DateForm = () => {
 				</FormControl>
 
 				<FormControl mt='15px'>
-					<Stack direction='row'>
-						<FormLabel htmlFor='isRepeatable'>Is the date repeatable?</FormLabel>
+					<Stack direction='row' align='center'>
+						<FormLabel htmlFor='isRepeatable' defaultValue='true' pt='2%'>
+							Is the date repeatable?
+						</FormLabel>
 						<Switch
 							name='isRepeatable'
 							id='isRepeatable'
+							// size='sm'
 							value={isRepeatable}
 							onChange={({ target }) => (target.checked ? setIsRepeatable(true) : setIsRepeatable(false))}
 						/>
@@ -147,13 +167,14 @@ const DateForm = () => {
 				</FormControl>
 
 				<FormControl mt='15px'>
-					<Stack direction='row'>
-						<FormLabel htmlFor='isOvernight' defaultValue='false'>
+					<Stack direction='row' align='center'>
+						<FormLabel htmlFor='isOvernight' defaultValue='false' pt='2%'>
 							Pack an overnight bag?
 						</FormLabel>
 						<Switch
 							name='isOvernight'
 							id='isOvernight'
+							// size='sm'
 							value={isOvernight}
 							onChange={({ target }) => (target.checked ? setIsOvernight(true) : setIsOvernight(false))}
 						/>
@@ -163,7 +184,7 @@ const DateForm = () => {
 				<FormControl mt='15px'>
 					<FormLabel htmlFor='dayOfWeek'>What Days of the Week?</FormLabel>
 					<CheckboxGroup id='dayOfWeek'>
-						<Stack direction='row'>
+						<Stack direction='row' align='center'>
 							<Checkbox
 								// name='dayOfWeek'
 								value='weekday'
@@ -183,19 +204,19 @@ const DateForm = () => {
 				</FormControl>
 
 				<FormControl mt='15px'>
-					<FormLabel htmlFor='cost'>What's the estimated budget?</FormLabel>
+					<FormLabel htmlFor='estimatedCost'>What's the estimated budget?</FormLabel>
 					<Stack direction='row'>
-						<RadioGroup id='cost'>
-							<Radio name='cost' value='0' mr='10px'>
+						<RadioGroup id='estimatedCost'>
+							<Radio name='estimatedCost' value='0' mr='10px'>
 								Free
 							</Radio>
-							<Radio name='cost' value='1' mr='10px'>
+							<Radio name='estimatedCost' value='1' mr='10px'>
 								$
 							</Radio>
-							<Radio name='cost' value='2' mr='10px'>
+							<Radio name='estimatedCost' value='2' mr='10px'>
 								$$
 							</Radio>
-							<Radio name='cost' value='3' mr='10px'>
+							<Radio name='estimatedCost' value='3' mr='10px'>
 								$$$
 							</Radio>
 						</RadioGroup>
