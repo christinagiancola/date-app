@@ -29,7 +29,7 @@ const DateForm = () => {
 	const [isOnWeekend, setIsOnWeekend] = useState(false);
 	const [doesExpire, setDoesExpire] = useState(false);
 	const [expirationDate, setExpirationDate] = useState(new Date());
-	// const [cost, setCost] = useState(0);
+	const [estimatedCost, setEstimatedCost] = useState(0);
 	const [isPetFriendly, setIsPetFriendly] = useState(false);
 
 	function handleSubmit(e) {
@@ -43,6 +43,7 @@ const DateForm = () => {
 		dateObj['isRepeatable'] = isRepeatable;
 		dateObj['isOvernight'] = isOvernight;
 		dateObj['isPetFriendly'] = isPetFriendly;
+		dateObj['estimatedCost'] = estimatedCost;
 		var dateJson = JSON.stringify(dateObj);
 		console.log('dateJson:', dateJson);
 		console.log('dateObj', dateObj);
@@ -207,16 +208,36 @@ const DateForm = () => {
 					<FormLabel htmlFor='estimatedCost'>What's the estimated budget?</FormLabel>
 					<Stack direction='row'>
 						<RadioGroup id='estimatedCost'>
-							<Radio name='estimatedCost' value='0' mr='10px'>
+							<Radio
+								name='estimatedCost'
+								value='0'
+								mr='10px'
+								onChange={({ target }) => (target.checked ? setEstimatedCost(0) : null)}
+							>
 								Free
 							</Radio>
-							<Radio name='estimatedCost' value='1' mr='10px'>
+							<Radio
+								name='estimatedCost'
+								value='1'
+								mr='10px'
+								onChange={({ target }) => (target.checked ? setEstimatedCost(1) : null)}
+							>
 								$
 							</Radio>
-							<Radio name='estimatedCost' value='2' mr='10px'>
+							<Radio
+								name='estimatedCost'
+								value='2'
+								mr='10px'
+								onChange={({ target }) => (target.checked ? setEstimatedCost(2) : null)}
+							>
 								$$
 							</Radio>
-							<Radio name='estimatedCost' value='3' mr='10px'>
+							<Radio
+								name='estimatedCost'
+								value='3'
+								mr='10px'
+								onChange={({ target }) => (target.checked ? setEstimatedCost(3) : null)}
+							>
 								$$$
 							</Radio>
 						</RadioGroup>
