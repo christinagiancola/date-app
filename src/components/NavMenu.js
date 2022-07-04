@@ -13,15 +13,23 @@ const NavMenu = ({ setLastClicked }) => {
 	return (
 		<HStack as='nav' className='text'>
 			<Menu>
-				<MenuButton as={Button} aria-label='Navigation Menu' leftIcon={<BsList />} variant='outline' borderRadius='10'>
+				<MenuButton
+					as={Button}
+					aria-label='Navigation Menu'
+					textTransform='lowercase'
+					leftIcon={<BsList />}
+					variant='outline'
+					borderRadius='10'
+				>
 					Menu
 				</MenuButton>
 				<MenuList>
-					<MenuItem icon={<BsFillHouseFill />} onClick={() => setLastClicked('home')}>
+					<MenuItem textTransform='lowercase' icon={<BsFillHouseFill />} onClick={() => setLastClicked('home')}>
 						Home
 					</MenuItem>
 					<MenuItem
 						icon={<BsPlusSquare />}
+						textTransform='lowercase'
 						onClick={() => {
 							setLastClicked('new-date');
 						}}
@@ -30,13 +38,14 @@ const NavMenu = ({ setLastClicked }) => {
 					</MenuItem>
 					<MenuItem
 						icon={<BsFillPencilFill />}
+						textTransform='lowercase'
 						onClick={() => {
 							setLastClicked('date-library');
 						}}
 					>
 						Edit Dates
 					</MenuItem>
-					<MenuItem icon={<BsPersonDashFill />} onClick={() => setLastClicked('login')}>
+					<MenuItem textTransform='lowercase' icon={<BsPersonDashFill />} onClick={() => setLastClicked('login')}>
 						User Logout
 					</MenuItem>
 				</MenuList>

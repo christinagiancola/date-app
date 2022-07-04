@@ -2,35 +2,47 @@ import React, { useState, useEffect } from 'react';
 import {
 	Container,
 	Stack,
+	Box,
+	Button,
 	FormControl,
 	FormLabel,
+	FormHelperText,
+	FormErrorMessage,
 	Input,
 	InputGroup,
 	InputRightElement,
-	Button,
-	FormHelperText,
-	FormErrorMessage,
+	Alert,
+	AlertIcon,
+	AlertTitle,
+	AlertDescription,
 } from '@chakra-ui/react';
+import { sendUserToServer } from '../service/client_functions';
 
 const LoginModal = () => {
 	const [emailAddress, setEmailAddress] = useState('');
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
+	const [showAlert, setShowAlert] = useState(false);
+	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
 
 	const handleSignIn = (e) => {
 		e.preventDefault();
-		console.log('login form submitted');
-		console.log('emailAddress', emailAddress);
-		console.log('password', password);
+		const userInfo = {
+			username: emailAddress,
+			password: password,
+		};
+
+		sendUserToServer(userInfo);
+		setShowAlert(true);
 	};
 
 	return (
-		<Container w='md' py='12' borderRadius='25' id='login-form' align='center'>
+		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
 			<form method='POST' onSubmit={handleSignIn}>
-				<Stack margin='auto' spacing={5} mt={5}>
+				<Stack margin='auto' spacing={3} mt={5}>
 					<FormControl>
-						<FormLabel htmlFor='email'>Email Address:</FormLabel>
+						<FormLabel htmlFor='email'>Username:</FormLabel>
 						<Input
 							isRequired
 							type='email'
@@ -49,14 +61,13 @@ const LoginModal = () => {
 								isRequired
 								type={showPassword ? 'text' : 'password'}
 								id='password'
-								placeholder='password'
 								variant='outline'
 								// aria-describedby='password-helper-text'
 								value={password}
 								onChange={({ target }) => setPassword(target.value)}
 							></Input>
 							<InputRightElement w='4.5rem'>
-								<Button size='sm' onClick={() => setShowPassword(!showPassword)}>
+								<Button size='sm' textTransform='lowercase' onClick={() => setShowPassword(!showPassword)}>
 									Show
 								</Button>
 							</InputRightElement>
@@ -64,12 +75,27 @@ const LoginModal = () => {
 						{/* <FormHelperText id='password-helper-text'>Pick a good one!</FormHelperText> */}
 					</FormControl>
 					<FormControl>
-						<Button type='submit' disabled={isInvalid}>
+						<Button type='submit' textTransform='lowercase' disabled={isInvalid}>
 							Sign In
 						</Button>
 					</FormControl>
 				</Stack>
 			</form>
+			{showAlert ? (
+				<Box mt='5'>
+					<Alert status={alertType} variant='subtle' flexDirection='column'>
+						<AlertIcon />
+						<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
+						<AlertDescription>
+							{alertType === 'success'
+								? 'Welcome back'
+								: 'Please double check that your username and password info are correct and try again'}
+						</AlertDescription>
+					</Alert>
+				</Box>
+			) : (
+				<Box />
+			)}
 		</Container>
 	);
 };

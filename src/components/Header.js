@@ -27,7 +27,7 @@ const Header = ({ setLastClicked, appName }) => {
 				<Spacer />
 				<NavMenu setLastClicked={setLastClicked} />
 				<Hide below='md'>
-					<Button leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
+					<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
 						Login
 					</Button>
 				</Hide>
