@@ -16,7 +16,6 @@ import {
 	AlertTitle,
 	AlertDescription,
 } from '@chakra-ui/react';
-import { sendUserToServer } from '../service/client_functions';
 
 const LoginModal = () => {
 	const [emailAddress, setEmailAddress] = useState('');
@@ -28,12 +27,6 @@ const LoginModal = () => {
 
 	const handleSignIn = (e) => {
 		e.preventDefault();
-		const userInfo = {
-			username: emailAddress,
-			password: password,
-		};
-
-		sendUserToServer(userInfo);
 		setShowAlert(true);
 	};
 
