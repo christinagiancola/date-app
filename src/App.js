@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import { healthCheck } from './service/client_functions';
+
 // import theme from './theme';
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
 				<Header setLastClicked={setLastClicked} appName={appName} />
 				<Spacer />
 				<div>
-					<Body lastClicked={lastClicked} appName={appName} />
+					<Body lastClicked={lastClicked} appName={appName} setIsLoggedIn={setIsLoggedIn} />
 				</div>
 				<Spacer />
 				<Footer appName={appName} />

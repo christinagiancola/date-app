@@ -43,7 +43,6 @@ const LoginModal = () => {
 
 	const handleSignIn = (e) => {
 		e.preventDefault();
-
 		const userInfo = {
 			username: emailAddress,
 			password: password,
