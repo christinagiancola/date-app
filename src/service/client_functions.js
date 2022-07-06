@@ -78,17 +78,4 @@ const getDateCard = (dateId) => {
 		});
 };
 
-const sendUserToServer = (userInfo) => {
-	axiosInstance
-		.post(`/`, userInfo)
-		.then(function (res) {
-			let loginResponse = res.data;
-			return loginResponse;
-		})
-		.catch(function (error) {
-			let loginError = error.toJSON();
-			return loginError;
-		});
-};
-
-export { healthCheck, getAllDates, addNewDate, editDateCard, deleteDateCard, getDateCard, sendUserToServer };
+export { healthCheck, getAllDates, addNewDate, editDateCard, deleteDateCard, getDateCard };
