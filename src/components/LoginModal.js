@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { axiosInstance } from '../service/client_functions';
 import {
 	Container,
 	Stack,
@@ -17,9 +18,8 @@ import {
 	AlertTitle,
 	AlertDescription,
 } from '@chakra-ui/react';
-// import { sendUserToServer } from '../service/client_functions';
 
-const LoginModal = () => {
+const LoginModal = ({ setIsLoggedIn }) => {
 	const [emailAddress, setEmailAddress] = useState('');
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
@@ -28,11 +28,12 @@ const LoginModal = () => {
 	const isInvalid = password === '' || emailAddress === '';
 
 	const sendUserToServer = (userInfo) => {
-		axios
-			.post(`https://ehwumue3sd.execute-api.us-east-1.amazonaws.com/Mock/`, userInfo)
+		axiosInstance
+			.post(`/`, userInfo)
 			.then(function (res) {
 				const apiResponse = res.data;
 				const loginResponse = apiResponse.data;
+				setIsLoggedIn(true);
 				return loginResponse;
 			})
 			.catch(function (error) {

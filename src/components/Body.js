@@ -7,16 +7,10 @@ import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
 import { sendUserToServer } from '../service/client_functions';
 
-const Body = ({ lastClicked }) => {
+const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 	let display;
 
-	// const userInfo = {
-	// 	username: emailAddress,
-	// 	password: password,
-	// };
-
-	// sendUserToServer(userInfo);
-
+	// TODO: switch statement?
 	// switch (lastClicked) {
 	// 	case 'login':
 	//     display = <LoginModal />;
@@ -30,18 +24,17 @@ const Body = ({ lastClicked }) => {
 	// 		break;
 	// }
 
-	// TODO: swap out repeated code for switch statement?
 	if (lastClicked === 'home') {
 		display = <DateGenerator />;
 	}
 	if (lastClicked === 'login') {
-		display = <LoginModal />;
+		display = <LoginModal setIsLoggedIn={setIsLoggedIn} />;
 	}
 	if (lastClicked === 'new-date') {
 		display = <DateForm />;
 	}
 	if (lastClicked === 'date-library') {
-		display = <DateLibrary />;
+		display = <DateLibrary isLoggedIn={isLoggedIn} />;
 	}
 
 	return (

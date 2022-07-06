@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Box, Badge, Heading } from '@chakra-ui/react';
+import { axiosInstance } from '../service/client_functions';
 
 const DateLibrary = () => {
-	let dates = require('../../dateCards.json');
+	const [dates, setDates] = useState([]);
 
-	let dateLibrary = dates.map((date, i) => {
+	let getDateCards = () => {
+		axiosInstance
+			.get(`/dates`)
+			.then(function (res) {
+				const apiResponse = res.data;
+				const dateArray = apiResponse.data;
+				return setDates(dateArray);
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+	};
+
+	useEffect(() => {
+		getDateCards();
+	}, []);
+
+	if (dates.length > 0) {
+		console.log('dates', dates);
 		return (
-			<Box maxW='sm' borderWidth='1px' borderRadius='15px' p='6' align='center'>
-				<Heading as='h5' size='md' key={i}>
-					{date.name}
-				</Heading>
-			</Box>
+			<div>
+				{dates.map((date) => {
+					return <Heading key={date.id}>{date.name}</Heading>;
+				})}
+			</div>
 		);
-	});
+	}
 
-	return <div>{dateLibrary}</div>;
+	return <div>The Date Library is Empty</div>;
 };
 
 export default DateLibrary;
