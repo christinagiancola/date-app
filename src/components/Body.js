@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import DateGenerator from './DateGenerator';
 import DateCard from './DateCard';
 import DateForm from './DateForm';
 import LoginModal from './LoginModal';
 import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
-import { sendUserToServer } from '../service/client_functions';
 
 const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 	let display;

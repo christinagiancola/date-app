@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Box, Badge, Heading } from '@chakra-ui/react';
 import { axiosInstance } from '../service/client_functions';
 

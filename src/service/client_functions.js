@@ -20,19 +20,6 @@ const healthCheck = () => {
 };
 
 // ? Do we really want to get ALL dates or should we break things into groups/pages to avoid very large responses?
-// const getAllDates = () => {
-// 	axiosInstance
-// 		.get(`/dates`)
-// 		.then(function (res) {
-// 			const apiResponse = res.data;
-// 			const dateArray = apiResponse.data;
-// 			console.log(dateArray);
-// 			return dateArray;
-// 		})
-// 		.catch(function (error) {
-// 			console.log(error);
-// 		});
-// };
 
 const addNewDate = (newDate) => {
 	axiosInstance
