@@ -33,7 +33,7 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 						</Button>
 					) : (
 						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
-							Login
+							Log In
 						</Button>
 					)}
 				</Hide>

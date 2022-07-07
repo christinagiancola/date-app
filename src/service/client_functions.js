@@ -19,7 +19,11 @@ const healthCheck = () => {
 		});
 };
 
-// ? Do we really want to get ALL dates or should we break things into groups/pages to avoid very large responses?
+const parseLoginResponse = (loginResponse) => {
+	console.log('parseLogInRespose called from client_functions.js');
+	// todo: add userId and accesstoken
+	return loginResponse;
+};
 
 const addNewDate = (newDate) => {
 	axiosInstance
@@ -68,4 +72,4 @@ const getDateCard = (dateId) => {
 		});
 };
 
-export { axiosInstance, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard };
+export { axiosInstance, parseLoginResponse, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard };

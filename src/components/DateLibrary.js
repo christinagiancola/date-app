@@ -5,6 +5,7 @@ import { axiosInstance } from '../service/client_functions';
 const DateLibrary = () => {
 	const [dates, setDates] = useState([]);
 
+	// ? Do we really want to get ALL dates or should we break things into groups/pages to avoid very large responses
 	let getDateCards = () => {
 		axiosInstance
 			.get(`/dates`)

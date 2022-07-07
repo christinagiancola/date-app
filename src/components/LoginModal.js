@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { axiosInstance } from '../service/client_functions';
+import { axiosInstance, parseLoginResponse } from '../service/client_functions';
 import {
 	Container,
 	Stack,
@@ -7,8 +7,6 @@ import {
 	Button,
 	FormControl,
 	FormLabel,
-	FormHelperText,
-	FormErrorMessage,
 	Input,
 	InputGroup,
 	InputRightElement,
@@ -26,7 +24,14 @@ const LoginModal = ({ setIsLoggedIn }) => {
 	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
 
-	const sendUserToServer = (userInfo) => {
+	// temp for parseLoginResponse(loginResponse)
+	const testLoginResponse = {
+		token:
+			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJiMGQxZGJhZTA2NTQwOWE1MTY0YjhmIiwiZW1haWwiOiJqb2huc21pdGhAaG90bWFpbC5jb20ifSwiaXNzIjoiZGF0ZS1hLWJhc2UiLCJpYXQiOjE2NTcxMzI3MDQsImV4cCI6MTY1NzIxOTEwNH0.nN6m73MjmugJ2sUNi4t2GDKbH94vqQWeHcj2QPH_THk',
+		userId: '62b0d1dbae065409a5164b8f',
+	};
+
+	const logInUser = (userInfo) => {
 		axiosInstance
 			.post(`/`, userInfo)
 			.then(function (res) {
@@ -36,24 +41,26 @@ const LoginModal = ({ setIsLoggedIn }) => {
 				return loginResponse;
 			})
 			.catch(function (error) {
-				console.log(error);
+				// move parseLoginResponse() to .then once connected to the server & replace testLoginResponse with loginResponse
+				parseLoginResponse(testLoginResponse);
 				setAlertType('error');
+				console.log(error);
 			});
 	};
 
-	const handleSignIn = (e) => {
+	const handleLogin = (e) => {
 		e.preventDefault();
 		const userInfo = {
 			username: emailAddress,
 			password: password,
 		};
-		sendUserToServer(userInfo);
+		logInUser(userInfo);
 		setShowAlert(true);
 	};
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
-			<form method='POST' onSubmit={handleSignIn}>
+			<form method='POST' onSubmit={handleLogin}>
 				<Stack margin='auto' spacing={3} mt={5}>
 					<FormControl>
 						<FormLabel htmlFor='email'>Username:</FormLabel>
@@ -61,12 +68,10 @@ const LoginModal = ({ setIsLoggedIn }) => {
 							isRequired
 							type='email'
 							id='email'
-							// aria-describedby='email-helper-text'
 							placeholder='yourname@gmail.com'
 							value={emailAddress}
 							onChange={({ target }) => setEmailAddress(target.value)}
 						></Input>
-						{/* <FormHelperText id='email-helper-text'>We'll never share your email.</FormHelperText> */}
 					</FormControl>
 					<FormControl>
 						<FormLabel htmlFor='email'>Password:</FormLabel>
@@ -90,7 +95,7 @@ const LoginModal = ({ setIsLoggedIn }) => {
 					</FormControl>
 					<FormControl>
 						<Button type='submit' textTransform='lowercase' disabled={isInvalid}>
-							Sign In
+							Log In
 						</Button>
 					</FormControl>
 				</Stack>
