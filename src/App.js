@@ -9,7 +9,7 @@ import { healthCheck } from './service/client_functions';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const appName = 'date app';
 
 	useEffect(() => {
@@ -22,7 +22,7 @@ const App = () => {
 				<Header setLastClicked={setLastClicked} appName={appName} isLoggedIn={isLoggedIn} />
 				<Spacer />
 				<div>
-					<Body lastClicked={lastClicked} appName={appName} setIsLoggedIn={setIsLoggedIn} />
+					<Body lastClicked={lastClicked} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 				</div>
 				<Spacer />
 				<Footer appName={appName} />

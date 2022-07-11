@@ -5,36 +5,34 @@ import DateForm from './DateForm';
 import LoginModal from './LoginModal';
 import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
+import { useEffect } from 'react/cjs/react.production.min';
 
 const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 	let display;
 
-	// TODO: switch statement?
-	// switch (lastClicked) {
-	// 	case 'login':
-	//     display = <LoginModal />;
-	// 		break;
-	//   case 'new-date':
-	//     display = <DateForm />;
-	//   case 'date-library':
-	//     display = <DateLibrary />;
-	// 	default 'home':
-	//     display = <DateGenerator />;
-	// 		break;
-	// }
-
-	if (lastClicked === 'home') {
-		display = <DateGenerator />;
-	}
-	if (lastClicked === 'login') {
+	if (!isLoggedIn) {
 		display = <LoginModal setIsLoggedIn={setIsLoggedIn} />;
 	}
-	if (lastClicked === 'new-date') {
-		display = <DateForm />;
+
+	if (isLoggedIn) {
+		if (lastClicked === 'home') {
+			display = <DateGenerator />;
+		}
+
+		if (lastClicked === 'login') {
+			display = <LoginModal setIsLoggedIn={setIsLoggedIn} />;
+		}
+
+		if (lastClicked === 'new-date') {
+			display = <DateForm />;
+		}
+
+		if (lastClicked === 'date-library') {
+			display = <DateLibrary />;
+		}
 	}
-	if (lastClicked === 'date-library') {
-		display = <DateLibrary isLoggedIn={isLoggedIn} />;
-	}
+
+	//if not logged in, show user the login form as the home page
 
 	return (
 		<Flex id='bodyContainer' w='100%' justify='center'>

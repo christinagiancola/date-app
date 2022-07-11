@@ -14,7 +14,12 @@ import {
 	AlertIcon,
 	AlertTitle,
 	AlertDescription,
+	FormHelperText,
 } from '@chakra-ui/react';
+
+// TODO: add sign up link, which toggled between sign up form and log in form
+// TODO: add google oauth login button
+// TODO: parseLoginResponse()
 
 const LoginModal = ({ setIsLoggedIn }) => {
 	const [emailAddress, setEmailAddress] = useState('');
@@ -61,44 +66,47 @@ const LoginModal = ({ setIsLoggedIn }) => {
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
 			<form method='POST' onSubmit={handleLogin}>
-				<Stack margin='auto' spacing={3} mt={5}>
-					<FormControl>
-						<FormLabel htmlFor='email'>Username:</FormLabel>
-						<Input
-							isRequired
-							type='email'
-							id='email'
-							placeholder='yourname@gmail.com'
-							value={emailAddress}
-							onChange={({ target }) => setEmailAddress(target.value)}
-						></Input>
-					</FormControl>
-					<FormControl>
-						<FormLabel htmlFor='email'>Password:</FormLabel>
-						<InputGroup>
+				<Box>
+					<Stack margin='auto' spacing={3} mt={5}>
+						<FormControl>
+							<FormLabel htmlFor='email'>Username:</FormLabel>
 							<Input
 								isRequired
-								type={showPassword ? 'text' : 'password'}
-								id='password'
-								variant='outline'
-								// aria-describedby='password-helper-text'
-								value={password}
-								onChange={({ target }) => setPassword(target.value)}
+								type='email'
+								id='email'
+								aria-describedby='email-helper-text'
+								value={emailAddress}
+								onChange={({ target }) => setEmailAddress(target.value)}
 							></Input>
-							<InputRightElement w='4.5rem'>
-								<Button size='sm' textTransform='lowercase' onClick={() => setShowPassword(!showPassword)}>
-									Show
-								</Button>
-							</InputRightElement>
-						</InputGroup>
-						{/* <FormHelperText id='password-helper-text'>Pick a good one!</FormHelperText> */}
-					</FormControl>
-					<FormControl>
-						<Button type='submit' textTransform='lowercase' disabled={isInvalid}>
-							Log In
-						</Button>
-					</FormControl>
-				</Stack>
+							<FormHelperText id='email-helper-text'>the email address associated with your account</FormHelperText>
+						</FormControl>
+						<FormControl>
+							<FormLabel htmlFor='email'>Password:</FormLabel>
+							<InputGroup>
+								<Input
+									isRequired
+									type={showPassword ? 'text' : 'password'}
+									id='password'
+									variant='outline'
+									// aria-describedby='password-helper-text'
+									value={password}
+									onChange={({ target }) => setPassword(target.value)}
+								></Input>
+								<InputRightElement w='4.5rem'>
+									<Button size='sm' textTransform='lowercase' onClick={() => setShowPassword(!showPassword)}>
+										Show
+									</Button>
+								</InputRightElement>
+							</InputGroup>
+							{/* <FormHelperText id='password-helper-text'>Pick a good one!</FormHelperText> */}
+						</FormControl>
+						<FormControl>
+							<Button type='submit' textTransform='lowercase' disabled={isInvalid} mt='4' px='8'>
+								Submit
+							</Button>
+						</FormControl>
+					</Stack>
+				</Box>
 			</form>
 			{showAlert ? (
 				<Box mt='5'>
