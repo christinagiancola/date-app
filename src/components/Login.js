@@ -21,13 +21,14 @@ import {
 // TODO: add google oauth login button
 // TODO: parseLoginResponse()
 
-const LoginModal = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn }) => {
 	const [emailAddress, setEmailAddress] = useState('');
 	const [password, setPassword] = useState('');
 	const [showPassword, setShowPassword] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
+	const [showSignUp, setShowSignUp] = useState(false);
 
 	// temp for parseLoginResponse(loginResponse)
 	const testLoginResponse = {
@@ -78,7 +79,7 @@ const LoginModal = ({ setIsLoggedIn }) => {
 								value={emailAddress}
 								onChange={({ target }) => setEmailAddress(target.value)}
 							></Input>
-							<FormHelperText id='email-helper-text'>the email address associated with your account</FormHelperText>
+							<FormHelperText id='email-helper-text'>please enter a valid email address</FormHelperText>
 						</FormControl>
 						<FormControl>
 							<FormLabel htmlFor='email'>Password:</FormLabel>
@@ -127,4 +128,4 @@ const LoginModal = ({ setIsLoggedIn }) => {
 	);
 };
 
-export default LoginModal;
+export default Login;

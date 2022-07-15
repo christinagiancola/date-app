@@ -2,7 +2,7 @@ import React from 'react';
 import DateGenerator from './DateGenerator';
 import DateCard from './DateCard';
 import DateForm from './DateForm';
-import LoginModal from './LoginModal';
+import Login from './Login';
 import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
 import { useEffect } from 'react/cjs/react.production.min';
@@ -11,7 +11,7 @@ const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 	let display;
 
 	if (!isLoggedIn) {
-		display = <LoginModal setIsLoggedIn={setIsLoggedIn} />;
+		display = <Login setIsLoggedIn={setIsLoggedIn} />;
 	}
 
 	if (isLoggedIn) {
@@ -20,7 +20,7 @@ const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 		}
 
 		if (lastClicked === 'login') {
-			display = <LoginModal setIsLoggedIn={setIsLoggedIn} />;
+			display = <Login setIsLoggedIn={setIsLoggedIn} />;
 		}
 
 		if (lastClicked === 'new-date') {
