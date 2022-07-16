@@ -37,9 +37,10 @@ const Login = ({ setIsLoggedIn }) => {
 		userId: '62b0d1dbae065409a5164b8f',
 	};
 
+	// TODO: logInUser should be called signUpUser since it's a post request
 	const logInUser = (userInfo) => {
 		axiosInstance
-			.post(`/`, userInfo)
+			.post(`/auth/login`, userInfo)
 			.then(function (res) {
 				const apiResponse = res.data;
 				const loginResponse = apiResponse.data;
@@ -53,6 +54,8 @@ const Login = ({ setIsLoggedIn }) => {
 				console.log(error);
 			});
 	};
+
+	// TODO: create new logInUser() with a GET request
 
 	const handleLogin = (e) => {
 		e.preventDefault();

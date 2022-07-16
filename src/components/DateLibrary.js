@@ -16,8 +16,7 @@ const DateLibrary = () => {
 			.get(`/dates`)
 			.then(function (res) {
 				const apiResponse = res.data;
-				const dateArray = apiResponse.data;
-				return setDates(dateArray);
+				return setDates(apiResponse);
 			})
 			.catch(function (error) {
 				console.log(error);

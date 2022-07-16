@@ -1,13 +1,15 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-	baseURL: 'https://ehwumue3sd.execute-api.us-east-1.amazonaws.com/Mock',
+	// baseURL: 'https://ehwumue3sd.execute-api.us-east-1.amazonaws.com/Mock',
+	baseURL: 'http://localhost:3000/api/v1',
 	headers: { 'Content-Type': 'application/json' },
+	withCredentials: true,
 });
 
 const healthCheck = () => {
 	axiosInstance
-		.get(`/`)
+		.get(`/health`)
 		.then(function (res) {
 			console.log(res);
 		})
