@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import DateGenerator from './DateGenerator';
 import DateCard from './DateCard';
 import DateForm from './DateForm';
 import Login from './Login';
 import DateLibrary from './DateLibrary';
 import { Flex } from '@chakra-ui/react';
-import { useEffect } from 'react/cjs/react.production.min';
 
 const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn }) => {
 	let display;
