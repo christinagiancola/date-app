@@ -73,6 +73,15 @@ const Login = ({ setIsLoggedIn }) => {
 	};
 
 	// TODO: create new signUpUser() with a POST request
+	const signUpUser = (userInfo) => {
+		axiosInstance
+			.post(`/auth/login`, userInfo)
+			.then(console.log('user signed up'))
+			.catch(function (error) {
+				setAlertType('error');
+				console.log(error);
+			});
+	};
 
 	const toggleSignUp = (e) => {
 		e.preventDefault();
