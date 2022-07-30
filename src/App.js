@@ -22,7 +22,7 @@ const App = () => {
 				<Header setLastClicked={setLastClicked} appName={appName} isLoggedIn={isLoggedIn} />
 				<Spacer />
 				<Box>
-					<Body lastClicked={lastClicked} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+					<Body lastClicked={lastClicked} appName={appName} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 				</Box>
 				<Spacer />
 				<Footer appName={appName} />
