@@ -1,6 +1,6 @@
 import React from 'react';
 import NavMenu from './NavMenu';
-import { Spacer, HStack, VStack, Box, Heading, Button, Show, Hide, IconButton } from '@chakra-ui/react';
+import { Spacer, HStack, VStack, Box, Heading, Button, Show, Hide, IconButton, Link } from '@chakra-ui/react';
 import { BsPersonCircle } from 'react-icons/bs';
 
 
@@ -10,7 +10,7 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 			<HStack id='headerContainer' justify='space-between' textTransform='lowercase' className='text'>
 				<VStack align='flex-start' px='2'>
 					<Heading as='h1' lineHeight='60%'>
-						{appName}
+            <Link style={{ textDecoration: 'none' }} onClick={() => setLastClicked('home')}>{appName}</Link>
 					</Heading>
 					<Heading as='h2' size='md'>
 						<span className='line'>

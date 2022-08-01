@@ -15,6 +15,8 @@ import {
 	Radio,
 	RadioGroup,
 	Switch,
+  Heading, 
+  Text
 } from '@chakra-ui/react';
 import { addNewDate } from '../service/client_functions';
 
@@ -51,10 +53,11 @@ const DateForm = () => {
 	}
 
 	return (
-		<Box align='center'>
+		<Box align='center' w='100%' textTransform='lowercase'>
+      <Heading as='h3' size='md' mb='3'>add a new date to your library</Heading>
 			<form method='POST' onSubmit={handleSubmit} id='newDateForm'>
 				<FormControl>
-					<FormLabel htmlFor='name'>Date Idea:</FormLabel>
+					<FormLabel htmlFor='name'>Title:</FormLabel>
 					<InputGroup>
 						<Input
 							isRequired
@@ -68,7 +71,7 @@ const DateForm = () => {
 				</FormControl>
 
 				<FormControl mt='15px'>
-					<FormLabel htmlFor='details'>Any extra details?</FormLabel>
+					<FormLabel htmlFor='details'>Extra Details?</FormLabel>
 					<InputGroup>
 						<Input
 							type='text'
@@ -271,7 +274,7 @@ const DateForm = () => {
 				)}
 
 				<FormControl mt='15px'>
-					<Button type='submit'>Add Date</Button>
+					<Button type='submit' textTransform='lowercase'>Submit</Button>
 				</FormControl>
 			</form>
 		</Box>

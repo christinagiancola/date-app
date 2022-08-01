@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { axiosInstance, parseLoginResponse } from '../service/client_functions';
 import {
 	Container,
+  Heading,
 	Stack,
 	Box,
 	Link,
@@ -11,6 +12,8 @@ import {
 	Input,
 	InputGroup,
 	InputRightElement,
+  VStack,
+  Divider,
 	Alert,
 	AlertIcon,
 	AlertTitle,
@@ -96,6 +99,7 @@ const Login = ({ setIsLoggedIn }) => {
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
+      <Heading as='h3' size='md' mb='3'>welcome back</Heading>
 			{showAlert ? (
 				<Box mt='5'>
 					<Alert status={alertType} variant='subtle' flexDirection='column'>
@@ -104,7 +108,7 @@ const Login = ({ setIsLoggedIn }) => {
 						<AlertDescription>
 							{alertType === 'success'
 								? 'Welcome back'
-								: 'Please double check that your username and password info are correct and try again'}
+								: 'Please double check your info and try again'}
 						</AlertDescription>
 					</Alert>
 				</Box>
@@ -169,14 +173,17 @@ const Login = ({ setIsLoggedIn }) => {
 								Submit
 							</Button>
 						</FormControl>
+            <Divider orientation='horizontal' mt='5'/>
 						{showSignUp ? (
-							<Box>
-								Already have an account? <Link onClick={(e) => toggleSignUp(e)}>Click here to log in.</Link>
-							</Box>
+							<VStack>
+                <Heading as='h3' size='md' mt='3'>Already have an account?</Heading>
+								<Link onClick={(e) => toggleSignUp(e)}>Click here to log in.</Link>
+							</VStack>
 						) : (
-							<Box>
-								Oh hi! Are you new here? <Link onClick={(e) => toggleSignUp(e)}>Click here to sign up.</Link>
-							</Box>
+							<VStack>
+                <Heading as='h3' size='md' mt='3'>are you new here?</Heading>
+								<Link onClick={(e) => toggleSignUp(e)}>Click here to sign up.</Link>
+							</VStack>
 						)}
 					</Stack>
 				</Box>
