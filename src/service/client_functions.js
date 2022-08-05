@@ -21,12 +21,6 @@ const healthCheck = () => {
 		});
 };
 
-const parseLoginResponse = (loginResponse) => {
-	console.log('parseLogInRespose called from client_functions.js');
-	// todo: add userId and accesstoken
-	return loginResponse;
-};
-
 const addNewDate = (newDate) => {
 	axiosInstance
 		.post(`/dates`, newDate)
@@ -74,4 +68,4 @@ const getDateCard = (dateId) => {
 		});
 };
 
-export { axiosInstance, parseLoginResponse, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard };
+export { axiosInstance, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard };

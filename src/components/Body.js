@@ -7,23 +7,26 @@ import DateLibrary from './DateLibrary';
 import { Flex, Box, VStack, Text, Heading, Icon, Button } from '@chakra-ui/react';
 import { BsCalendar2Event } from 'react-icons/bs';
 
-
 const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName }) => {
 	let display;
 
-  const landingPage = (
-    <VStack textTransform='lowercase'>
-      <Icon as={BsCalendar2Event} w={10} h={10}/>
-      <Heading as='h3' size='md'>Ready for your next date?</Heading>
-      <Text fontSize='lg'>{appName} lets you create, collect, and generate the idea for your next great date</Text>
-      <Text fontSize='lg'>that way you can spend less time planning what to do,</Text>
-      <Text fontSize='lg'>and more time actually doing it</Text>
-			<Button textTransform='lowercase'>generate a date</Button>    
-    </VStack>
-  )
+	const landingPage = (
+		<VStack textTransform='lowercase'>
+			<Icon as={BsCalendar2Event} w={10} h={10} />
+			<Heading as='h3' size='md'>
+				Ready for your next date?
+			</Heading>
+			<Text fontSize='lg'>{appName} lets you create, collect, and generate the idea for your next great date</Text>
+			<Text fontSize='lg'>that way you can spend less time planning what to do,</Text>
+			<Text fontSize='lg'>and more time actually doing it</Text>
+			<Button textTransform='lowercase'>generate a date</Button>
+		</VStack>
+	);
 
 	if (!isLoggedIn) {
-		display = landingPage;
+		if (lastClicked === 'login') {
+			display = <Login setIsLoggedIn={setIsLoggedIn} />;
+		} else display = landingPage;
 	}
 
 	if (isLoggedIn) {
@@ -45,7 +48,7 @@ const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName }) => {
 	}
 
 	return (
-		<Flex id='bodyContainer' w='100%'  minWidth='450px' justify='center'>
+		<Flex id='bodyContainer' w='100%' minWidth='450px' justify='center'>
 			{display}
 		</Flex>
 	);

@@ -9,8 +9,13 @@ import { healthCheck } from './service/client_functions';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const appName = 'date app';
+
+	// TODO: DISABLE MENU BTN IF !LOGGEDIN
+	// TODO: MAKE LANDING PAGE A SEPARATE COMPONENT
+	// TODO: EXPAND SIGN UP ISINVALID() -- EMAIL AND PASSWORD VALID, PASSWORD AND CONFIRMPASSWORD MATCH
+	// TODO:
 
 	useEffect(() => {
 		healthCheck();

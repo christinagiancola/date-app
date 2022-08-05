@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { axiosInstance, parseLoginResponse } from '../service/client_functions';
+import { axiosInstance } from '../service/client_functions';
 import {
 	Container,
-  Heading,
+	Heading,
 	Stack,
 	Box,
 	Link,
@@ -12,8 +12,8 @@ import {
 	Input,
 	InputGroup,
 	InputRightElement,
-  VStack,
-  Divider,
+	VStack,
+	Divider,
 	Alert,
 	AlertIcon,
 	AlertTitle,
@@ -21,9 +21,7 @@ import {
 	FormHelperText,
 } from '@chakra-ui/react';
 
-// TODO: add sign up link, which toggled between sign up form and log in form
 // TODO: add google oauth login button
-// TODO: parseLoginResponse()
 
 const Login = ({ setIsLoggedIn }) => {
 	const [emailAddress, setEmailAddress] = useState('');
@@ -31,19 +29,9 @@ const Login = ({ setIsLoggedIn }) => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [showSignUp, setShowSignUp] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
-	const isInvalid = password === '' || emailAddress === '';
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertType, setAlertType] = useState('success');
-
-	// TODO if newUser === true, show sign up form instead of log in form
-	const [newUser, setNewUser] = useState(false);
-
-	// temp for parseLoginResponse(loginResponse)
-	const testLoginResponse = {
-		token:
-			'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjJiMGQxZGJhZTA2NTQwOWE1MTY0YjhmIiwiZW1haWwiOiJqb2huc21pdGhAaG90bWFpbC5jb20ifSwiaXNzIjoiZGF0ZS1hLWJhc2UiLCJpYXQiOjE2NTcxMzI3MDQsImV4cCI6MTY1NzIxOTEwNH0.nN6m73MjmugJ2sUNi4t2GDKbH94vqQWeHcj2QPH_THk',
-		userId: '62b0d1dbae065409a5164b8f',
-	};
+	const isInvalid = password === '' || emailAddress === '';
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -52,38 +40,9 @@ const Login = ({ setIsLoggedIn }) => {
 			password: password,
 		};
 		{
-			newUser ? signUpUser(userInfo) : logInUser(userInfo);
+			showSignUp ? signUpUser(userInfo) : logInUser(userInfo);
 		}
 		setShowAlert(true);
-	};
-
-	// TODO: logInUser is a post request
-	const logInUser = (userInfo) => {
-		axiosInstance
-			.get(`/auth/login`, userInfo)
-			.then(function (res) {
-				const apiResponse = res.data;
-				const loginResponse = apiResponse.data;
-				setIsLoggedIn(true);
-				return loginResponse;
-			})
-			.catch(function (error) {
-				// move parseLoginResponse() to .then once connected to the server & replace testLoginResponse with loginResponse
-				parseLoginResponse(testLoginResponse);
-				setAlertType('error');
-				console.log(error);
-			});
-	};
-
-	// TODO: create new signUpUser() with a POST request
-	const signUpUser = (userInfo) => {
-		axiosInstance
-			.post(`/auth/login`, userInfo)
-			.then(console.log('user signed up'))
-			.catch(function (error) {
-				setAlertType('error');
-				console.log(error);
-			});
 	};
 
 	const toggleSignUp = (e) => {
@@ -94,21 +53,52 @@ const Login = ({ setIsLoggedIn }) => {
 		if (showSignUp === false) {
 			setShowSignUp(true);
 		}
-		console.log('show sign up?', showSignUp);
+	};
+
+	const logInUser = (userInfo) => {
+		console.log('logInUser triggered');
+		console.log(`userInfo:`, userInfo);
+		axiosInstance
+			.get(`/auth/login`, userInfo)
+			.then(function (res) {
+				setAlertType('success');
+				const apiResponse = res.data;
+				const loginResponse = apiResponse.data;
+				setIsLoggedIn(true);
+				return loginResponse;
+			})
+			.catch(function (error) {
+				setAlertType('error');
+				console.log(`error:`, error);
+			});
+	};
+
+	const signUpUser = (userInfo) => {
+		console.log('signUpUser triggered');
+		axiosInstance
+			.post(`/auth/login`, userInfo)
+			.then(function (res) {
+				setAlertType('success');
+				setIsLoggedIn(true);
+			})
+			.catch(function (error) {
+				setAlertType('error');
+				console.log(error);
+			});
 	};
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
-      <Heading as='h3' size='md' mb='3'>welcome back</Heading>
+			<Heading as='h3' size='md' mb='3'>
+				welcome back
+			</Heading>
 			{showAlert ? (
 				<Box mt='5'>
 					<Alert status={alertType} variant='subtle' flexDirection='column'>
 						<AlertIcon />
 						<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
 						<AlertDescription>
-							{alertType === 'success'
-								? 'Welcome back'
-								: 'Please double check your info and try again'}
+							{alertType === 'success' ? 'Welcome back' : 'Please double check your info and try again'}
 						</AlertDescription>
 					</Alert>
 				</Box>
@@ -157,8 +147,8 @@ const Login = ({ setIsLoggedIn }) => {
 										type={showPassword ? 'text' : 'password'}
 										id='confirmPassword'
 										variant='outline'
-										value={password}
-										onChange={({ target }) => setPassword(target.value)}
+										value={confirmPassword}
+										onChange={({ target }) => setConfirmPassword(target.value)}
 									></Input>
 									<InputRightElement w='4.5rem'>
 										<Button size='sm' textTransform='lowercase' onClick={() => setShowPassword(!showPassword)}>
@@ -173,15 +163,19 @@ const Login = ({ setIsLoggedIn }) => {
 								Submit
 							</Button>
 						</FormControl>
-            <Divider orientation='horizontal' mt='5'/>
+						<Divider orientation='horizontal' mt='5' />
 						{showSignUp ? (
 							<VStack>
-                <Heading as='h3' size='md' mt='3'>Already have an account?</Heading>
+								<Heading as='h3' size='md' mt='3'>
+									Already have an account?
+								</Heading>
 								<Link onClick={(e) => toggleSignUp(e)}>Click here to log in.</Link>
 							</VStack>
 						) : (
 							<VStack>
-                <Heading as='h3' size='md' mt='3'>are you new here?</Heading>
+								<Heading as='h3' size='md' mt='3'>
+									are you new here?
+								</Heading>
 								<Link onClick={(e) => toggleSignUp(e)}>Click here to sign up.</Link>
 							</VStack>
 						)}
