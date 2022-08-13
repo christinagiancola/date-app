@@ -1,6 +1,8 @@
 import React from 'react';
 import { Box, Flex, Heading } from '@chakra-ui/react';
 
+// TODO: add footer content, social media links, blurb, link to github/linkedin, logo, etc.
+
 const Footer = ({ appName }) => {
 	let currentYear = new Date().getFullYear();
 	return (

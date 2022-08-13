@@ -57,7 +57,7 @@ const Login = ({ setIsLoggedIn }) => {
 
 	const logInUser = (userInfo) => {
 		console.log('logInUser triggered');
-		console.log(`userInfo:`, userInfo);
+		// console.log(`userInfo:`, userInfo);
 		axiosInstance
 			.get(`/auth/login`, userInfo)
 			.then(function (res) {
@@ -79,11 +79,14 @@ const Login = ({ setIsLoggedIn }) => {
 			.post(`/auth/login`, userInfo)
 			.then(function (res) {
 				setAlertType('success');
+				const apiResponse = res.data;
+				const signUpResponse = apiResponse.data;
 				setIsLoggedIn(true);
+				return signUpResponse;
 			})
 			.catch(function (error) {
 				setAlertType('error');
-				console.log(error);
+				console.log('error:', error);
 			});
 	};
 

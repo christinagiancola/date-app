@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import DateGenerator from './DateGenerator';
-import DateCard from './DateCard';
+import React from 'react';
 import DateForm from './DateForm';
 import Login from './Login';
 import DateLibrary from './DateLibrary';
-import { Flex, Box, VStack, Text, Heading, Icon, Button } from '@chakra-ui/react';
+import { Flex, VStack, Text, Heading, Icon, Button } from '@chakra-ui/react';
 import { BsCalendar2Event } from 'react-icons/bs';
 
 const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName }) => {

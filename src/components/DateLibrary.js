@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Badge, Heading, SimpleGrid } from '@chakra-ui/react';
+import { Box, SimpleGrid } from '@chakra-ui/react';
 import { axiosInstance } from '../service/client_functions';
 import DateCardMini from './DateCardMini';
 
+// TODO: make <DateCardMini> clickable (or edit button? on hover?)-- when clicked hide other cards and show full <DateCard>
+// TODO: add delete button to <DateCardMini> (on hover?) -- open up a modal to confirm delete, if confirmed remove from database
+// TODO: add filter options to show different dates depending on various details (color code? badges?)
 // TODO: add badge for dates that have expiration dates
-// TODO: add buttons to edit or delete date card, delete button should show modal that confirms delete card choice
-// TODO:
 
 const DateLibrary = () => {
 	const [dates, setDates] = useState([]);
