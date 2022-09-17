@@ -59,7 +59,7 @@ const Login = ({ setIsLoggedIn }) => {
 		console.log('logInUser triggered');
 		// console.log(`userInfo:`, userInfo);
 		axiosInstance
-			.get(`/auth/login`, userInfo)
+			.get(`/auth/login`, { params: userInfo })
 			.then(function (res) {
 				setAlertType('success');
 				const apiResponse = res.data;
