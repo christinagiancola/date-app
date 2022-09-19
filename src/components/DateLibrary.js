@@ -43,7 +43,7 @@ const DateLibrary = () => {
 							noOfLines={1}
 							overflow='hidden'
 						>
-							<DateCardMini title={date.name} details={date.details} />
+							<DateCardMini title={date.name} details={date.details} id={date._id} />
 						</Box>
 					);
 				})}

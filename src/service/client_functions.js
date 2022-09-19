@@ -50,6 +50,8 @@ const deleteDateCard = (dateId) => {
 	axiosInstance
 		.delete(`/dates/${dateId}`)
 		.then(function (res) {
+			window.location.reload(false);
+			console.log(`deleted date card ${dateId}`);
 			console.log(res.data);
 		})
 		.catch(function (error) {
