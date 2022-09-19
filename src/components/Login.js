@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../service/client_functions';
 import {
 	Container,
@@ -24,14 +24,19 @@ import {
 // TODO: add google oauth login button
 
 const Login = ({ setIsLoggedIn }) => {
-	const [emailAddress, setEmailAddress] = useState('');
-	const [password, setPassword] = useState('');
+	const [emailAddress, setEmailAddress] = useState('johnsmith@hotmail.com');
+	const [password, setPassword] = useState('12345');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [showSignUp, setShowSignUp] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
+
+	useEffect(() => {
+		const e = { preventDefault: () => {} };
+		handleSubmit(e);
+	}, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();

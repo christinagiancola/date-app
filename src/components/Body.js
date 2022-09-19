@@ -25,9 +25,10 @@ const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName }) => {
 	);
 
 	if (!isLoggedIn) {
-		if (lastClicked === 'login') {
-			display = <Login setIsLoggedIn={setIsLoggedIn} />;
-		} else display = landingPage;
+		// if (lastClicked === 'login') {
+		// 	display = <Login setIsLoggedIn={setIsLoggedIn} />;
+		// } else display = landingPage;
+		display = <Login setIsLoggedIn={setIsLoggedIn} />;
 	}
 
 	if (isLoggedIn) {

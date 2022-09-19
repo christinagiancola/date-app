@@ -15,8 +15,8 @@ import {
 	Radio,
 	RadioGroup,
 	Switch,
-  Heading, 
-  Text
+	Heading,
+	Text,
 } from '@chakra-ui/react';
 import { addNewDate } from '../service/client_functions';
 
@@ -47,14 +47,16 @@ const DateForm = () => {
 		dateObj['isPetFriendly'] = isPetFriendly;
 		dateObj['estimatedCost'] = estimatedCost;
 		var dateJson = JSON.stringify(dateObj);
-		console.log('dateJson:', dateJson);
-		console.log('dateObj', dateObj);
+		// console.log('dateJson:', dateJson);
+		// console.log('dateObj', dateObj);
 		addNewDate(dateJson);
 	}
 
 	return (
 		<Box align='center' w='100%' textTransform='lowercase'>
-      <Heading as='h3' size='md' mb='3'>add a new date to your library</Heading>
+			<Heading as='h3' size='md' mb='3'>
+				add a new date to your library
+			</Heading>
 			<form method='POST' onSubmit={handleSubmit} id='newDateForm'>
 				<FormControl>
 					<FormLabel htmlFor='name'>Title:</FormLabel>
@@ -274,7 +276,9 @@ const DateForm = () => {
 				)}
 
 				<FormControl mt='15px'>
-					<Button type='submit' textTransform='lowercase'>Submit</Button>
+					<Button type='submit' textTransform='lowercase'>
+						Submit
+					</Button>
 				</FormControl>
 			</form>
 		</Box>

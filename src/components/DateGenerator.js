@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Button, Heading } from '@chakra-ui/react';
 
 const DateGenerator = () => {
-	const generateRandomDate = () => {
+	let generateRandomDate = () => {
 		console.log('Get a date from the date-a-base!');
 	};
 

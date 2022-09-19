@@ -27,7 +27,7 @@ const addNewDate = (newDate) => {
 		.then(function (res) {
 			const apiResponse = res.data;
 			const createdCard = apiResponse.data;
-			console.log('New Date Added', createdCard);
+			console.log('New Date Added', apiResponse);
 		})
 		.catch(function (error) {
 			console.log(error);

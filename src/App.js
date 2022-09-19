@@ -8,7 +8,7 @@ import { healthCheck } from './service/client_functions';
 // import theme from './theme';
 
 const App = () => {
-	const [lastClicked, setLastClicked] = useState('home');
+	const [lastClicked, setLastClicked] = useState('date-library');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const appName = 'date app';
 

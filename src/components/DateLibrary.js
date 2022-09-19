@@ -33,8 +33,17 @@ const DateLibrary = () => {
 			<SimpleGrid columns={{ sm: 1, md: 2, lg: 3 }} spacing='20px'>
 				{dates.map((date) => {
 					return (
-						<Box align='center' p={4} height='80px' borderWidth='1px' borderRadius='lg' noOfLines={1} overflow='hidden'>
-							<DateCardMini title={date.name} key={date.id} details={date.details} />
+						<Box
+							align='center'
+							key={date._id}
+							p={4}
+							height='80px'
+							borderWidth='1px'
+							borderRadius='lg'
+							noOfLines={1}
+							overflow='hidden'
+						>
+							<DateCardMini title={date.name} details={date.details} />
 						</Box>
 					);
 				})}
