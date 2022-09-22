@@ -8,10 +8,7 @@ import DateCardMini from './DateCardMini';
 // TODO: add filter options to show different dates depending on various details (color code? badges?)
 // TODO: add badge for dates that have expiration dates
 
-const DateLibrary = () => {
-	const [dates, setDates] = useState([]);
-
-	// ? Do we really want to get ALL dates or should we break things into groups/pages to avoid very large responses
+const DateLibrary = ({ dates, setDates }) => {
 	let getDateCards = () => {
 		axiosInstance
 			.get(`/dates`)

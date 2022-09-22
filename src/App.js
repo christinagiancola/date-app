@@ -10,6 +10,7 @@ import { healthCheck } from './service/client_functions';
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('date-library');
 	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [dates, setDates] = useState([]);
 	const appName = 'date app';
 
 	// TODO: DISABLE MENU BTN IF !LOGGEDIN
@@ -26,7 +27,14 @@ const App = () => {
 				<Header setLastClicked={setLastClicked} appName={appName} isLoggedIn={isLoggedIn} />
 				<Spacer />
 				<Box>
-					<Body lastClicked={lastClicked} appName={appName} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+					<Body
+						lastClicked={lastClicked}
+						appName={appName}
+						isLoggedIn={isLoggedIn}
+						setIsLoggedIn={setIsLoggedIn}
+						dates={dates}
+						setDates={setDates}
+					/>
 				</Box>
 				<Spacer />
 				<Footer appName={appName} />
