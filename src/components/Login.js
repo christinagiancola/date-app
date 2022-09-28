@@ -23,7 +23,7 @@ import {
 
 // TODO: add google oauth login button
 
-const Login = ({ setIsLoggedIn }) => {
+const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [emailAddress, setEmailAddress] = useState('johnsmith@hotmail.com');
 	const [password, setPassword] = useState('12345');
 	const [confirmPassword, setConfirmPassword] = useState('');
@@ -33,10 +33,10 @@ const Login = ({ setIsLoggedIn }) => {
 	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
 
-	useEffect(() => {
-		const e = { preventDefault: () => {} };
-		handleSubmit(e);
-	}, []);
+	// useEffect(() => {
+	// 	const e = { preventDefault: () => {} };
+	// 	handleSubmit(e);
+	// }, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -69,7 +69,12 @@ const Login = ({ setIsLoggedIn }) => {
 				setAlertType('success');
 				const apiResponse = res.data;
 				const loginResponse = apiResponse.data;
+				setLastClicked('login');
 				setIsLoggedIn(true);
+				// setTimeout(function () {
+				// 	console.log('*****');
+				// 	setIsLoggedIn(true);
+				// }, 3000);
 				return loginResponse;
 			})
 			.catch(function (error) {
@@ -86,7 +91,10 @@ const Login = ({ setIsLoggedIn }) => {
 				setAlertType('success');
 				const apiResponse = res.data;
 				const signUpResponse = apiResponse.data;
-				setIsLoggedIn(true);
+				setTimeout(function () {
+					console.log('*****');
+					setIsLoggedIn(true);
+				}, 3000);
 				return signUpResponse;
 			})
 			.catch(function (error) {

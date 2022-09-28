@@ -28,6 +28,7 @@ const App = () => {
 				<Spacer />
 				<Box>
 					<Body
+						setLastClicked={setLastClicked}
 						lastClicked={lastClicked}
 						appName={appName}
 						isLoggedIn={isLoggedIn}

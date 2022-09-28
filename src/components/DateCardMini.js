@@ -1,14 +1,15 @@
 import React from 'react';
 import { Flex, Spacer, Box, Heading, Text, CloseButton } from '@chakra-ui/react';
-import { deleteDateCard } from '../service/client_functions';
+import { deleteDateCard, truncateString } from '../service/client_functions';
 
-const DateCardMini = ({ title, details, id, ...rest }) => {
+const DateCardMini = ({ setDeletedDate, title, details, id, ...rest }) => {
 	let handleClick = () => {
-		// open confirmation modal
-		// if confirmed
+		// TODO open confirmation modal
+		// TODO if confirmed
 		deleteDateCard(id);
-		//refresh page to show updated library
-		// if not confirmed, close modal
+		setDeletedDate(`${id}`);
+		// TODO refresh page to show updated library
+		// TODO if not confirmed, close modal
 	};
 
 	return (
@@ -16,9 +17,9 @@ const DateCardMini = ({ title, details, id, ...rest }) => {
 			<Spacer />
 			<Box>
 				<Heading as='h3' size='md'>
-					{title}
+					{title.toLowerCase()}
 				</Heading>
-				{details ? <Text>{details}</Text> : null}
+				{details ? <Text>{truncateString(details, 50).toLowerCase()}</Text> : null}
 			</Box>
 			<Spacer />
 			<Box>

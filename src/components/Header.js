@@ -33,7 +33,6 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 				<NavMenu setLastClicked={setLastClicked} />
 				<Hide below='md'>
 					{isLoggedIn ? (
-						// ! LOG OUT BUTTON SHOULD CLEAR OUT ALERT BANNER
 						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
 							Log Out
 						</Button>

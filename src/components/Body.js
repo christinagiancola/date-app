@@ -5,7 +5,7 @@ import DateLibrary from './DateLibrary';
 import { Flex, VStack, Text, Heading, Icon, Button } from '@chakra-ui/react';
 import { BsCalendar2Event } from 'react-icons/bs';
 
-const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates }) => {
+const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates }) => {
 	let display;
 
 	// TODO: action button should take you to a "quiz" style component, lets you input filters
@@ -28,7 +28,7 @@ const Body = ({ lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates
 		// if (lastClicked === 'login') {
 		// 	display = <Login setIsLoggedIn={setIsLoggedIn} />;
 		// } else display = landingPage;
-		display = <Login setIsLoggedIn={setIsLoggedIn} />;
+		display = <Login setIsLoggedIn={setIsLoggedIn} setLastClicked={setLastClicked} />;
 	}
 
 	if (isLoggedIn) {

@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+const truncateString = (string, maxLength) => {
+	return string.length > maxLength ? string.slice(0, maxLength - 1) + '...' : string;
+};
+
 const axiosInstance = axios.create({
 	// baseURL: 'https://ehwumue3sd.execute-api.us-east-1.amazonaws.com/Mock',
 	baseURL: 'http://localhost:3000/api/v1',
@@ -50,7 +54,7 @@ const deleteDateCard = (dateId) => {
 	axiosInstance
 		.delete(`/dates/${dateId}`)
 		.then(function (res) {
-			window.location.reload(false);
+			// window.location.reload(false);
 			console.log(`deleted date card ${dateId}`);
 			console.log(res.data);
 		})
@@ -70,4 +74,4 @@ const getDateCard = (dateId) => {
 		});
 };
 
-export { axiosInstance, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard };
+export { axiosInstance, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard, truncateString };

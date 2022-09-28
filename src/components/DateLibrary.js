@@ -9,6 +9,8 @@ import DateCardMini from './DateCardMini';
 // TODO: add badge for dates that have expiration dates
 
 const DateLibrary = ({ dates, setDates }) => {
+	const [deletedDate, setDeletedDate] = useState(``);
+
 	let getDateCards = () => {
 		axiosInstance
 			.get(`/dates`)
@@ -21,9 +23,10 @@ const DateLibrary = ({ dates, setDates }) => {
 			});
 	};
 
+	// get array of date cards on first render and any time a date is deleted from the library
 	useEffect(() => {
 		getDateCards();
-	}, []);
+	}, [deletedDate]);
 
 	if (dates.length > 0) {
 		return (
@@ -40,7 +43,7 @@ const DateLibrary = ({ dates, setDates }) => {
 							noOfLines={1}
 							overflow='hidden'
 						>
-							<DateCardMini title={date.name} details={date.details} id={date._id} />
+							<DateCardMini title={date.name} details={date.details} id={date._id} setDeletedDate={setDeletedDate} />
 						</Box>
 					);
 				})}
