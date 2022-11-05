@@ -8,9 +8,6 @@ import { BsCalendar2Event } from 'react-icons/bs';
 const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates }) => {
 	let display;
 
-	// TODO: action button should take you to a "quiz" style component, lets you input filters
-	// ? Set up button to generate a random date from the library first? Then implement a more complex filter system later?
-
 	const landingPage = (
 		<VStack textTransform='lowercase'>
 			<Icon as={BsCalendar2Event} w={10} h={10} />

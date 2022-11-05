@@ -3,9 +3,6 @@ import NavMenu from './NavMenu';
 import { Spacer, HStack, VStack, Box, Heading, Button, Show, Hide, IconButton, Link } from '@chakra-ui/react';
 import { BsPersonCircle } from 'react-icons/bs';
 
-// TODO: make icon to add to header?
-// TODO: add favicon
-
 const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 	return (
 		<Box w={{ base: '100%', md: '90%', lg: '80%', xl: '70%' }} p='25px'>

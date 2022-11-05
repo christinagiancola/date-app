@@ -1,11 +1,9 @@
-import { Container, Stack, Spacer, Box, VStack } from '@chakra-ui/react';
+import { Container, Stack, Spacer, Box } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
 import { healthCheck } from './service/client_functions';
-
-// import theme from './theme';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
@@ -15,7 +13,7 @@ const App = () => {
 
 	// TODO: DISABLE MENU BTN IF !LOGGEDIN
 	// TODO: MAKE LANDING PAGE A SEPARATE COMPONENT
-	// TODO: EXPAND SIGN UP ISINVALID() -- EMAIL AND PASSWORD VALID, PASSWORD AND CONFIRMPASSWORD MATCH
+	// TODO: EXPAND SIGN UP ISINVALID() -- EMAIL AND PASSWORD VALID, PASSWORD AND CONFIRM PASSWORD MATCH
 
 	useEffect(() => {
 		healthCheck();

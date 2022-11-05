@@ -33,11 +33,6 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [alertType, setAlertType] = useState('success');
 	const isInvalid = password === '' || emailAddress === '';
 
-	// useEffect(() => {
-	// 	const e = { preventDefault: () => {} };
-	// 	handleSubmit(e);
-	// }, []);
-
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const userInfo = {
@@ -48,6 +43,9 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 			showSignUp ? signUpUser(userInfo) : logInUser(userInfo);
 		}
 		setShowAlert(true);
+		setTimeout(function () {
+			setLastClicked('home');
+		}, 2500);
 	};
 
 	const toggleSignUp = (e) => {
@@ -61,8 +59,6 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	};
 
 	const logInUser = (userInfo) => {
-		console.log('logInUser triggered');
-		// console.log(`userInfo:`, userInfo);
 		axiosInstance
 			.get(`/auth/login`, { params: userInfo })
 			.then(function (res) {
@@ -71,10 +67,6 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 				const loginResponse = apiResponse.data;
 				setLastClicked('login');
 				setIsLoggedIn(true);
-				// setTimeout(function () {
-				// 	console.log('*****');
-				// 	setIsLoggedIn(true);
-				// }, 3000);
 				return loginResponse;
 			})
 			.catch(function (error) {
