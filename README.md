@@ -7,4 +7,5 @@
 ##### - ChakraUI
 ##### - React
 ##### - React Hooks
-##### - 
+##### - MongoDB
+##### - Express 
