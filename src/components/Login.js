@@ -168,7 +168,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 						) : null}
 						<FormControl>
 							<Button type='submit' textTransform='lowercase' disabled={isInvalid} mt='4' px='8'>
-								Submit
+								{showSignUp ? 'Sign Up' : 'Submit'}
 							</Button>
 						</FormControl>
 						<Divider orientation='horizontal' mt='5' />

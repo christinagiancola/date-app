@@ -30,7 +30,6 @@ const addNewDate = (newDate) => {
 		.post(`/dates`, newDate)
 		.then(function (res) {
 			const apiResponse = res.data;
-			const createdCard = apiResponse.data;
 			console.log('New Date Added', apiResponse);
 		})
 		.catch(function (error) {
@@ -74,4 +73,15 @@ const getDateCard = (dateId) => {
 		});
 };
 
-export { axiosInstance, healthCheck, addNewDate, editDateCard, deleteDateCard, getDateCard, truncateString };
+const handleLogout = () => {};
+
+export {
+	axiosInstance,
+	healthCheck,
+	addNewDate,
+	editDateCard,
+	deleteDateCard,
+	getDateCard,
+	truncateString,
+	handleLogout,
+};
