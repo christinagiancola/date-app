@@ -5,7 +5,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 
 const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 	return (
-		<Box w={{ base: '100%', md: '90%', lg: '80%', xl: '70%' }} p='25px'>
+		<Box w={{ base: '100%', md: '90%', lg: '80%', xl: '70%' }} p='35'>
 			<HStack id='headerContainer' justify='space-between' textTransform='lowercase' className='text'>
 				<VStack align='flex-start' px='2'>
 					<Heading as='h1' lineHeight='60%'>

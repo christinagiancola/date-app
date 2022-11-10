@@ -45,6 +45,14 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 		setShowAlert(true);
 	};
 
+	useEffect(() => {
+		if (alertType === 'success') {
+			setTimeout(() => {
+				setLastClicked('home');
+			}, 2500);
+		}
+	}, [alertType]);
+
 	const toggleSignUp = (e) => {
 		e.preventDefault();
 		if (showSignUp === true) {
@@ -94,7 +102,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
-			<Heading as='h3' size='md' mb='3'>
+			<Heading as='h3' size='md' mb={3}>
 				welcome back
 			</Heading>
 			{showAlert ? (
@@ -104,7 +112,9 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 							<AlertIcon />
 							<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
 							<AlertDescription>
-								{alertType === 'success' ? 'Welcome back' : 'Please double check your info and try again'}
+								{alertType === 'success'
+									? 'Redirecting you to the homepage...'
+									: 'Please double check your info and try again'}
 							</AlertDescription>
 						</Alert>
 					</Box>
