@@ -9,7 +9,7 @@ import {
 	BsPersonDashFill,
 } from 'react-icons/bs';
 
-const NavMenu = ({ setLastClicked }) => {
+const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 	return (
 		<HStack as='nav' className='text'>
 			<Menu>
@@ -20,6 +20,7 @@ const NavMenu = ({ setLastClicked }) => {
 					leftIcon={<BsList />}
 					variant='outline'
 					borderRadius='10'
+					disabled={!isLoggedIn}
 				>
 					Menu
 				</MenuButton>

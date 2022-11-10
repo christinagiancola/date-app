@@ -30,7 +30,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [showSignUp, setShowSignUp] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
-	const [alertType, setAlertType] = useState('success');
+	const [alertType, setAlertType] = useState();
 	const isInvalid = password === '' || emailAddress === '';
 
 	const handleSubmit = (e) => {
@@ -43,9 +43,6 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 			showSignUp ? signUpUser(userInfo) : logInUser(userInfo);
 		}
 		setShowAlert(true);
-		setTimeout(function () {
-			setLastClicked('home');
-		}, 2500);
 	};
 
 	const toggleSignUp = (e) => {
@@ -101,18 +98,18 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 				welcome back
 			</Heading>
 			{showAlert ? (
-				<Box mt='5'>
-					<Alert status={alertType} variant='subtle' flexDirection='column'>
-						<AlertIcon />
-						<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
-						<AlertDescription>
-							{alertType === 'success' ? 'Welcome back' : 'Please double check your info and try again'}
-						</AlertDescription>
-					</Alert>
-				</Box>
-			) : (
-				<Box />
-			)}
+				alertType ? (
+					<Box mt='5'>
+						<Alert status={alertType} variant='subtle' flexDirection='column'>
+							<AlertIcon />
+							<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
+							<AlertDescription>
+								{alertType === 'success' ? 'Welcome back' : 'Please double check your info and try again'}
+							</AlertDescription>
+						</Alert>
+					</Box>
+				) : null
+			) : null}
 			<form method='POST' onSubmit={handleSubmit}>
 				<Box>
 					<Stack margin='auto' spacing={3} mt={5}>

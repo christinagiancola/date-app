@@ -27,7 +27,7 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 					</Heading>
 				</VStack>
 				<Spacer />
-				<NavMenu setLastClicked={setLastClicked} />
+				<NavMenu setLastClicked={setLastClicked} isLoggedIn={isLoggedIn} />
 				<Hide below='md'>
 					{isLoggedIn ? (
 						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
