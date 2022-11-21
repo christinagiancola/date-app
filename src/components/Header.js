@@ -1,5 +1,6 @@
 import React from 'react';
 import NavMenu from './NavMenu';
+import { handleLogout } from '../service/client_functions';
 import { Spacer, HStack, VStack, Box, Heading, Button, Show, Hide, IconButton, Link } from '@chakra-ui/react';
 import { BsPersonCircle } from 'react-icons/bs';
 
@@ -30,7 +31,7 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 				<NavMenu setLastClicked={setLastClicked} isLoggedIn={isLoggedIn} />
 				<Hide below='md'>
 					{isLoggedIn ? (
-						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={() => setLastClicked('login')}>
+						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={handleLogout()}>
 							Log Out
 						</Button>
 					) : (

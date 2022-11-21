@@ -45,6 +45,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 		setShowAlert(true);
 	};
 
+	// TODO: extract this function to client_functions as a redirectUser(page)
 	useEffect(() => {
 		if (alertType === 'success') {
 			setTimeout(() => {

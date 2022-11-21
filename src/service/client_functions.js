@@ -73,7 +73,9 @@ const getDateCard = (dateId) => {
 		});
 };
 
-const handleLogout = () => {};
+const handleLogout = () => {
+	axiosInstance.get('logout');
+};
 
 export {
 	axiosInstance,
