@@ -22,7 +22,12 @@ const App = () => {
 	return (
 		<Container maxW='100%'>
 			<Stack h='calc(100vh)' w='100%' align='center'>
-				<Header setLastClicked={setLastClicked} appName={appName} isLoggedIn={isLoggedIn} />
+				<Header
+					setLastClicked={setLastClicked}
+					appName={appName}
+					isLoggedIn={isLoggedIn}
+					setIsLoggedIn={setIsLoggedIn}
+				/>
 				<Spacer />
 				<Box>
 					<Body

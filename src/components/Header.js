@@ -4,7 +4,7 @@ import { handleLogout } from '../service/client_functions';
 import { Spacer, HStack, VStack, Box, Heading, Button, Show, Hide, IconButton, Link } from '@chakra-ui/react';
 import { BsPersonCircle } from 'react-icons/bs';
 
-const Header = ({ setLastClicked, appName, isLoggedIn }) => {
+const Header = ({ setLastClicked, appName, isLoggedIn, setIsLoggedIn }) => {
 	return (
 		<Box w={{ base: '100%', md: '90%', lg: '80%', xl: '70%' }} p='35'>
 			<HStack id='headerContainer' justify='space-between' textTransform='lowercase' className='text'>
@@ -31,7 +31,14 @@ const Header = ({ setLastClicked, appName, isLoggedIn }) => {
 				<NavMenu setLastClicked={setLastClicked} isLoggedIn={isLoggedIn} />
 				<Hide below='md'>
 					{isLoggedIn ? (
-						<Button textTransform='lowercase' leftIcon={<BsPersonCircle />} onClick={handleLogout()}>
+						<Button
+							textTransform='lowercase'
+							leftIcon={<BsPersonCircle />}
+							onClick={() => {
+								setIsLoggedIn(false);
+								handleLogout();
+							}}
+						>
 							Log Out
 						</Button>
 					) : (

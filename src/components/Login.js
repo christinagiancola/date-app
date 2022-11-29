@@ -33,6 +33,12 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [alertType, setAlertType] = useState();
 	const isInvalid = password === '' || emailAddress === '';
 
+	const redirectToHomePage = () => {
+		setTimeout(function () {
+			setLastClicked('home');
+		}, 2500);
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const userInfo = {
@@ -44,15 +50,6 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 		}
 		setShowAlert(true);
 	};
-
-	// TODO: extract this function to client_functions as a redirectUser(page)
-	useEffect(() => {
-		if (alertType === 'success') {
-			setTimeout(() => {
-				setLastClicked('home');
-			}, 2500);
-		}
-	}, [alertType]);
 
 	const toggleSignUp = (e) => {
 		e.preventDefault();
@@ -73,6 +70,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 				const loginResponse = apiResponse.data;
 				setLastClicked('login');
 				setIsLoggedIn(true);
+				redirectToHomePage();
 				return loginResponse;
 			})
 			.catch(function (error) {
@@ -103,7 +101,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
-			<Heading as='h3' size='md' mb={3}>
+			<Heading as='h3' size='md' mb='3'>
 				welcome back
 			</Heading>
 			{showAlert ? (
@@ -111,10 +109,10 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 					<Box mt='5'>
 						<Alert status={alertType} variant='subtle' flexDirection='column'>
 							<AlertIcon />
-							<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Something went wrong'}</AlertTitle>
+							<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Oops, something went wrong.'}</AlertTitle>
 							<AlertDescription>
 								{alertType === 'success'
-									? 'Redirecting you to the homepage...'
+									? `let's take you to the homepage...`
 									: 'Please double check your info and try again'}
 							</AlertDescription>
 						</Alert>
