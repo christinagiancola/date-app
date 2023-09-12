@@ -3,7 +3,7 @@ import { Flex, Spacer, Box, Heading, Text, CloseButton } from '@chakra-ui/react'
 import { deleteDateCard, truncateString } from '../service/client_functions';
 
 const DateCardMini = ({ setDeletedDate, title, details, id, ...rest }) => {
-	let handleClick = () => {
+	let handleClosingClick = () => {
 		// TODO open confirmation modal
 		// TODO if confirmed
 		deleteDateCard(id);
@@ -23,7 +23,7 @@ const DateCardMini = ({ setDeletedDate, title, details, id, ...rest }) => {
 			</Box>
 			<Spacer />
 			<Box>
-				<CloseButton ml={4} onClick={() => handleClick()} />
+				<CloseButton ml={4} onClick={() => handleClosingClick()} />
 			</Box>
 		</Flex>
 	);
