@@ -18,7 +18,7 @@ const healthCheck = () => {
 			console.log(res);
 		})
 		.catch(function (error) {
-			console.log(error);
+			console.log(error.response);
 		})
 		.then(function () {
 			console.log('called healthCheck()');
@@ -73,6 +73,18 @@ const getDateCard = (dateId) => {
 		});
 };
 
+const getAllDates = () => {
+	axiosInstance
+		.get(`dates`)
+		.then(function (res) {
+			console.log(res.data);
+			return res.data;
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+};
+
 const handleLogout = () => {
 	axiosInstance.post(`/auth/logout`).catch((error) => {
 		console.log(`Error logging out:`, error);
@@ -86,6 +98,7 @@ export {
 	editDateCard,
 	deleteDateCard,
 	getDateCard,
+	getAllDates,
 	truncateString,
 	handleLogout,
 };

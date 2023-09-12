@@ -2,7 +2,8 @@ import React from 'react';
 import { Box, Button, Heading } from '@chakra-ui/react';
 
 const DateGenerator = () => {
-	let generateRandomDate = () => {
+	let generateRandomDate = (e) => {
+		e.preventDefault();
 		console.log('Get a date from the date-a-base!');
 	};
 
@@ -12,7 +13,7 @@ const DateGenerator = () => {
 			<Box mt='2'>
 				<p>Click the button below to pull a randomized date from your date library.</p>
 			</Box>
-			<Button size='lg' mt='5' textTransform='lowercase' onClick={() => generateRandomDate()}>
+			<Button size='lg' mt='5' textTransform='lowercase' onClick={() => generateRandomDate(e)}>
 				Generate a Random Date
 			</Button>
 		</Box>

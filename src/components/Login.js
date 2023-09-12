@@ -22,6 +22,8 @@ import {
 } from '@chakra-ui/react';
 
 // TODO: add google oauth login button
+// TODO: test new user sign up
+// ? add error for signing up a user that already exists
 
 const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [emailAddress, setEmailAddress] = useState('johnsmith@hotmail.com');
@@ -102,14 +104,14 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	return (
 		<Container w='md' py='12' borderRadius='25' id='login-form' align='center' textTransform='lowercase'>
 			<Heading as='h3' size='md' mb='3'>
-				welcome back
+				{showSignUp ? 'nice to meet you' : 'welcome back'}
 			</Heading>
 			{showAlert ? (
 				alertType ? (
 					<Box mt='5'>
 						<Alert status={alertType} variant='subtle' flexDirection='column'>
 							<AlertIcon />
-							<AlertTitle>{alertType === 'success' ? 'Login successful' : 'Oops, something went wrong.'}</AlertTitle>
+							<AlertTitle>{alertType === 'success' ? 'Success!' : 'Oops, something went wrong.'}</AlertTitle>
 							<AlertDescription>
 								{alertType === 'success'
 									? `let's take you to the homepage...`
@@ -188,7 +190,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 						) : (
 							<VStack>
 								<Heading as='h3' size='md' mt='3'>
-									are you new here?
+									Are you new here?
 								</Heading>
 								<Link onClick={(e) => toggleSignUp(e)}>Click here to sign up.</Link>
 							</VStack>

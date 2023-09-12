@@ -20,7 +20,7 @@ import {
 } from '@chakra-ui/react';
 import { addNewDate } from '../service/client_functions';
 
-const DateForm = () => {
+const DateForm = ({ setLastClicked }) => {
 	const [name, setName] = useState('');
 	const [details, setDetails] = useState('');
 	const [location, setLocation] = useState('');
@@ -33,6 +33,16 @@ const DateForm = () => {
 	const [expirationDate, setExpirationDate] = useState(new Date());
 	const [estimatedCost, setEstimatedCost] = useState(0);
 	const [isPetFriendly, setIsPetFriendly] = useState(false);
+
+	// TODO: show confirmation after submit and loading animation before redirect to library
+	// TODO: remove card visually when 'x' icon is clicked AND show message that card is deleted. add undo feature?
+	// TODO: when mini card is clicked, show full date card page (or maybe add edit icon that activates full card?)
+
+	const redirectToLibrary = () => {
+		setTimeout(function () {
+			setLastClicked('date-library');
+		}, 2500);
+	};
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -47,9 +57,8 @@ const DateForm = () => {
 		dateObj['isPetFriendly'] = isPetFriendly;
 		dateObj['estimatedCost'] = estimatedCost;
 		var dateJson = JSON.stringify(dateObj);
-		// console.log('dateJson:', dateJson);
-		// console.log('dateObj', dateObj);
 		addNewDate(dateJson);
+		redirectToLibrary();
 	}
 
 	return (

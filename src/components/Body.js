@@ -35,7 +35,7 @@ const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName,
 		}
 
 		if (lastClicked === 'new-date') {
-			display = <DateForm />;
+			display = <DateForm setLastClicked={setLastClicked} />;
 		}
 
 		if (lastClicked === 'date-library') {

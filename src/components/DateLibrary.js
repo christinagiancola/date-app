@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import { axiosInstance } from '../service/client_functions';
+import { axiosInstance, getAllDates } from '../service/client_functions';
 import DateCardMini from './DateCardMini';
 
 // TODO: make <DateCardMini> clickable (or edit button? on hover?)-- when clicked hide other cards and show full <DateCard>
