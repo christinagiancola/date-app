@@ -1,12 +1,18 @@
 import React from 'react';
+import DateCardMini from './DateCardMini';
 import { BsCalendar2Event } from 'react-icons/bs';
 import { Box, Button, Heading, VStack, Icon, Text } from '@chakra-ui/react';
 
 const DateGenerator = ({ appName, dates }) => {
 	let generateRandomDate = (e) => {
 		e.preventDefault();
-		console.log(dates.length);
+		// console.log(`${dates.length} Dates in Library`);
+		let randomDate = dates[Math.floor(Math.random() * dates.length)];
+		console.log(`Random Date:` + randomDate.name);
 	};
+
+	//TODO add <DateCardMini> that shows after generateRandomDate()
+	//TODO make delete button optionally shown, don't want to delete cards from <DateGenerator>
 
 	return (
 		<Box align='center'>

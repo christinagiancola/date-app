@@ -10,20 +10,6 @@ import DateCardMini from './DateCardMini';
 const DateLibrary = ({ dates, setDates, getAllDates }) => {
 	const [deletedDate, setDeletedDate] = useState(``);
 
-	//TODO move getDateCards to client functions -- needed for generating a date in landing page as well
-
-	// let getDateCards = () => {
-	// 	axiosInstance
-	// 		.get(`/dates`)
-	// 		.then(function (res) {
-	// 			const apiResponse = res.data;
-	// 			return setDates(apiResponse);
-	// 		})
-	// 		.catch(function (error) {
-	// 			console.log(error);
-	// 		});
-	// };
-
 	// get array of date cards on first render and any time a date is deleted from the library
 	useEffect(() => {
 		getAllDates(setDates);
