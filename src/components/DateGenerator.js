@@ -2,10 +2,10 @@ import React from 'react';
 import { BsCalendar2Event } from 'react-icons/bs';
 import { Box, Button, Heading, VStack, Icon, Text } from '@chakra-ui/react';
 
-const DateGenerator = ({ appName }) => {
+const DateGenerator = ({ appName, dates }) => {
 	let generateRandomDate = (e) => {
 		e.preventDefault();
-		console.log('Get a date from the date-a-base!');
+		console.log(dates.length);
 	};
 
 	return (
@@ -18,7 +18,9 @@ const DateGenerator = ({ appName }) => {
 				<Text fontSize='lg'>{appName} lets you create, collect, and generate the idea for your next great date</Text>
 				<Text fontSize='lg'>that way you can spend less time figuring out what to do,</Text>
 				<Text fontSize='lg'>and more time actually doing it</Text>
-				<Button textTransform='lowercase'>generate a date</Button>
+				<Button textTransform='lowercase' onClick={(e) => generateRandomDate(e)}>
+					generate a date
+				</Button>
 			</VStack>
 		</Box>
 	);

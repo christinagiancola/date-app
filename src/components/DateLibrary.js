@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Box, SimpleGrid } from '@chakra-ui/react';
-import { axiosInstance, getAllDates } from '../service/client_functions';
 import DateCardMini from './DateCardMini';
 
 // TODO: make <DateCardMini> clickable (or edit button? on hover?)-- when clicked hide other cards and show full <DateCard>
@@ -8,24 +7,26 @@ import DateCardMini from './DateCardMini';
 // TODO: add filter options to show different dates depending on various details (color code? badges?)
 // TODO: add badge for dates that have expiration dates
 
-const DateLibrary = ({ dates, setDates }) => {
+const DateLibrary = ({ dates, setDates, getAllDates }) => {
 	const [deletedDate, setDeletedDate] = useState(``);
 
-	let getDateCards = () => {
-		axiosInstance
-			.get(`/dates`)
-			.then(function (res) {
-				const apiResponse = res.data;
-				return setDates(apiResponse);
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-	};
+	//TODO move getDateCards to client functions -- needed for generating a date in landing page as well
+
+	// let getDateCards = () => {
+	// 	axiosInstance
+	// 		.get(`/dates`)
+	// 		.then(function (res) {
+	// 			const apiResponse = res.data;
+	// 			return setDates(apiResponse);
+	// 		})
+	// 		.catch(function (error) {
+	// 			console.log(error);
+	// 		});
+	// };
 
 	// get array of date cards on first render and any time a date is deleted from the library
 	useEffect(() => {
-		getDateCards();
+		getAllDates(setDates);
 	}, [deletedDate]);
 
 	if (dates.length > 0) {

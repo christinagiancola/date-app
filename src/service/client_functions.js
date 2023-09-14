@@ -73,12 +73,13 @@ const getDateCard = (dateId) => {
 		});
 };
 
-const getAllDates = () => {
+const getAllDates = (setterFunc) => {
 	axiosInstance
 		.get(`dates`)
 		.then(function (res) {
 			console.log(res.data);
-			return res.data;
+			const apiResponse = res.data;
+			return setterFunc(apiResponse);
 		})
 		.catch(function (error) {
 			console.log(error);

@@ -3,20 +3,20 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
-import { healthCheck } from './service/client_functions';
+import { healthCheck, getAllDates } from './service/client_functions';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const [dates, setDates] = useState([]);
 	const appName = 'date app';
 
-	// TODO: DISABLE MENU BTN IF !LOGGEDIN
-	// TODO: MAKE LANDING PAGE A SEPARATE COMPONENT
-	// TODO: EXPAND SIGN UP ISINVALID() -- EMAIL AND PASSWORD VALID, PASSWORD AND CONFIRM PASSWORD MATCH
-
 	useEffect(() => {
 		healthCheck();
+	}, []);
+
+	useEffect(() => {
+		getAllDates(setDates);
 	}, []);
 
 	return (
@@ -38,6 +38,7 @@ const App = () => {
 						setIsLoggedIn={setIsLoggedIn}
 						dates={dates}
 						setDates={setDates}
+						getAllDates={getAllDates}
 					/>
 				</Box>
 				<Spacer />

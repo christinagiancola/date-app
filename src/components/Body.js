@@ -2,11 +2,10 @@ import React from 'react';
 import DateForm from './DateForm';
 import Login from './Login';
 import DateLibrary from './DateLibrary';
-import { Flex, VStack, Text, Heading, Icon, Button } from '@chakra-ui/react';
-import { BsCalendar2Event } from 'react-icons/bs';
+import { Flex } from '@chakra-ui/react';
 import DateGenerator from './DateGenerator';
 
-const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates }) => {
+const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName, dates, setDates, getAllDates }) => {
 	let display;
 
 	if (!isLoggedIn) {
@@ -15,7 +14,7 @@ const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName,
 
 	if (isLoggedIn) {
 		if (lastClicked === 'home') {
-			display = <DateGenerator appName={appName} />;
+			display = <DateGenerator appName={appName} dates={dates} />;
 		}
 
 		if (lastClicked === 'login') {
@@ -27,7 +26,7 @@ const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName,
 		}
 
 		if (lastClicked === 'date-library') {
-			display = <DateLibrary dates={dates} setDates={setDates} />;
+			display = <DateLibrary dates={dates} setDates={setDates} getAllDates={getAllDates} />;
 		}
 	}
 
