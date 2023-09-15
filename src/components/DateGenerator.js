@@ -1,5 +1,5 @@
 import React from 'react';
-import DateCardMini from './DateCardMini';
+import DateCard from './DateCard';
 import { BsCalendar2Event } from 'react-icons/bs';
 import { Box, Button, Heading, VStack, Icon, Text } from '@chakra-ui/react';
 
@@ -16,7 +16,7 @@ const DateGenerator = ({ appName, dates }) => {
 
 	return (
 		<Box align='center'>
-			<VStack textTransform='lowercase'>
+			<VStack textTransform='lowercase' id='generator-home'>
 				<Icon as={BsCalendar2Event} w={10} h={10} />
 				<Heading as='h3' size='md'>
 					Ready for your next date?
@@ -26,6 +26,13 @@ const DateGenerator = ({ appName, dates }) => {
 				<Text fontSize='lg'>and more time actually doing it</Text>
 				<Button textTransform='lowercase' onClick={(e) => generateRandomDate(e)}>
 					generate a date
+				</Button>
+			</VStack>
+			<hr />
+			<VStack>
+				<DateCard />
+				<Button textTransform='lowercase' onClick={(e) => generateRandomDate(e)}>
+					generate another date
 				</Button>
 			</VStack>
 		</Box>

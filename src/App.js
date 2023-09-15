@@ -7,7 +7,7 @@ import { healthCheck, getAllDates } from './service/client_functions';
 
 const App = () => {
 	const [lastClicked, setLastClicked] = useState('home');
-	const [isLoggedIn, setIsLoggedIn] = useState(true);
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [dates, setDates] = useState([]);
 	const appName = 'date app';
 

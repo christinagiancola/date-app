@@ -26,7 +26,7 @@ const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 				</MenuButton>
 				<MenuList>
 					<MenuItem textTransform='lowercase' icon={<BsFillHouseFill />} onClick={() => setLastClicked('home')}>
-						Home
+						Pick a Date
 					</MenuItem>
 					<MenuItem
 						icon={<BsPlusSquare />}
@@ -44,7 +44,7 @@ const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 							setLastClicked('date-library');
 						}}
 					>
-						Edit Dates
+						View Date Library
 					</MenuItem>
 				</MenuList>
 			</Menu>
