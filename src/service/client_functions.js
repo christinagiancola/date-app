@@ -67,6 +67,7 @@ const getDateCard = (dateId) => {
 		.get(`dates/${dateId}`)
 		.then(function (res) {
 			console.log(res.data);
+			return res.data;
 		})
 		.catch(function (error) {
 			console.log(error);
