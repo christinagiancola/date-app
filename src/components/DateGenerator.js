@@ -1,14 +1,14 @@
 import React from 'react';
-import DateCard from './DateCard';
 import { BsCalendar2Event } from 'react-icons/bs';
 import { Box, Button, Heading, VStack, Icon, Text } from '@chakra-ui/react';
 
-const DateGenerator = ({ appName, dates }) => {
+const DateGenerator = ({ appName, dates, setLastClicked }) => {
 	let generateRandomDate = (e) => {
 		e.preventDefault();
 		// console.log(`${dates.length} Dates in Library`);
 		let randomDate = dates[Math.floor(Math.random() * dates.length)];
 		console.log(`Random Date:` + randomDate.name);
+		setLastClicked('date-card');
 	};
 
 	//TODO add <DateCardMini> that shows after generateRandomDate()
@@ -26,13 +26,6 @@ const DateGenerator = ({ appName, dates }) => {
 				<Text fontSize='lg'>and more time actually doing it</Text>
 				<Button textTransform='lowercase' onClick={(e) => generateRandomDate(e)}>
 					generate a date
-				</Button>
-			</VStack>
-			<hr />
-			<VStack>
-				<DateCard />
-				<Button textTransform='lowercase' onClick={(e) => generateRandomDate(e)}>
-					generate another date
 				</Button>
 			</VStack>
 		</Box>

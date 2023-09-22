@@ -2,6 +2,7 @@ import React from 'react';
 import DateForm from './DateForm';
 import Login from './Login';
 import DateLibrary from './DateLibrary';
+import DateCard from './DateCard';
 import { Flex } from '@chakra-ui/react';
 import DateGenerator from './DateGenerator';
 
@@ -14,7 +15,7 @@ const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName,
 
 	if (isLoggedIn) {
 		if (lastClicked === 'home') {
-			display = <DateGenerator appName={appName} dates={dates} />;
+			display = <DateGenerator appName={appName} dates={dates} setLastClicked={setLastClicked} />;
 		}
 
 		if (lastClicked === 'login') {
@@ -27,6 +28,10 @@ const Body = ({ setLastClicked, lastClicked, isLoggedIn, setIsLoggedIn, appName,
 
 		if (lastClicked === 'date-library') {
 			display = <DateLibrary dates={dates} setDates={setDates} getAllDates={getAllDates} />;
+		}
+
+		if (lastClicked === 'date-card') {
+			display = <DateCard />;
 		}
 	}
 

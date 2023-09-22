@@ -8,7 +8,7 @@ import DateCardMini from './DateCardMini';
 // TODO: add badge for dates that have expiration dates
 
 const DateLibrary = ({ dates, setDates, getAllDates }) => {
-	const [deletedDate, setDeletedDate] = useState(``);
+	let [deletedDate, setDeletedDate] = useState(``);
 
 	// get array of date cards on first render and any time a date is deleted from the library
 	useEffect(() => {
