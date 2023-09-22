@@ -14,12 +14,9 @@ import {
 	InputRightElement,
 	VStack,
 	Divider,
-	Alert,
-	AlertIcon,
-	AlertTitle,
-	AlertDescription,
 	FormHelperText,
 } from '@chakra-ui/react';
+import LoginAlert from './LoginAlert';
 
 // TODO: add google oauth login button
 // TODO: test new user sign up
@@ -55,12 +52,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 
 	const toggleSignUp = (e) => {
 		e.preventDefault();
-		if (showSignUp === true) {
-			setShowSignUp(false);
-		}
-		if (showSignUp === false) {
-			setShowSignUp(true);
-		}
+		setShowSignUp(!showSignUp);
 	};
 
 	const logInUser = (userInfo) => {
@@ -106,21 +98,7 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 			<Heading as='h3' size='md' mb='3'>
 				{showSignUp ? 'nice to meet you' : 'welcome back'}
 			</Heading>
-			{showAlert ? (
-				alertType ? (
-					<Box mt='5'>
-						<Alert status={alertType} variant='subtle' flexDirection='column'>
-							<AlertIcon />
-							<AlertTitle>{alertType === 'success' ? 'Success!' : 'Oops, something went wrong.'}</AlertTitle>
-							<AlertDescription>
-								{alertType === 'success'
-									? `let's take you to the homepage...`
-									: 'Please double check your info and try again'}
-							</AlertDescription>
-						</Alert>
-					</Box>
-				) : null
-			) : null}
+			{showAlert && alertType ? <LoginAlert alertType={alertType} /> : null}
 			<form method='POST' onSubmit={handleSubmit}>
 				<Box>
 					<Stack margin='auto' spacing={3} mt={5}>
