@@ -1,13 +1,6 @@
 import React from 'react';
 import { HStack, Button, Box, Menu, MenuButton, MenuList, MenuItem, IconButton, Show, Hide } from '@chakra-ui/react';
-import {
-	BsPlusSquare,
-	BsFillHouseFill,
-	BsList,
-	BsFillPencilFill,
-	BsPersonPlusFill,
-	BsPersonDashFill,
-} from 'react-icons/bs';
+import { BsPlusSquare, BsFillHouseFill, BsList, BsFillPencilFill, BsUiChecksGrid } from 'react-icons/bs';
 
 const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 	return (
@@ -26,7 +19,7 @@ const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 				</MenuButton>
 				<MenuList>
 					<MenuItem textTransform='lowercase' icon={<BsFillHouseFill />} onClick={() => setLastClicked('home')}>
-						Pick a Date
+						Home
 					</MenuItem>
 					<MenuItem
 						icon={<BsPlusSquare />}
@@ -44,7 +37,16 @@ const NavMenu = ({ setLastClicked, isLoggedIn }) => {
 							setLastClicked('date-library');
 						}}
 					>
-						View Date Library
+						View All Dates
+					</MenuItem>
+					<MenuItem
+						icon={<BsUiChecksGrid />}
+						textTransform='lowercase'
+						onClick={() => {
+							setLastClicked('date-card');
+						}}
+					>
+						Pick a Date
 					</MenuItem>
 				</MenuList>
 			</Menu>

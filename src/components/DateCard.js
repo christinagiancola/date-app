@@ -49,7 +49,7 @@ const DateCard = ({ generateRandomDate }) => {
 					</Heading>
 					{date.repeating ? 'yes' : 'no'}
 					<ButtonGroup py='5' size='md' variant='outline'>
-						<Button borderRadius='10' width='auto' className='button'>
+						<Button borderRadius='10' width='auto' className='button' leftIcon={BsCalendarPlus}>
 							let's do it
 						</Button>
 						<Button id='new-date-btn' borderRadius='10' width='auto' className='button' onClick={(e) => handleClick(e)}>
