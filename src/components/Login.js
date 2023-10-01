@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { axiosInstance } from '../service/client_functions';
 import {
 	Container,
@@ -28,9 +28,11 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [showSignUp, setShowSignUp] = useState(false);
 	const [showPassword, setShowPassword] = useState(false);
+	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
 	const [alertType, setAlertType] = useState();
-	const isInvalid = password === '' || emailAddress === '';
+	const isInvalidForm = password === '' || emailAddress === '';
+	const confirmPasswordRef = useRef(null);
 
 	const redirectToHomePage = () => {
 		setTimeout(function () {
@@ -138,22 +140,28 @@ const Login = ({ setIsLoggedIn, setLastClicked }) => {
 								<InputGroup>
 									<Input
 										isRequired
-										type={showPassword ? 'text' : 'password'}
+										type={showConfirmPassword ? 'text' : 'password'}
 										id='confirmPassword'
 										variant='outline'
 										value={confirmPassword}
 										onChange={({ target }) => setConfirmPassword(target.value)}
+										ref={confirmPasswordRef}
 									></Input>
 									<InputRightElement w='4.5rem'>
-										<Button size='sm' textTransform='lowercase' onClick={() => setShowPassword(!showPassword)}>
+										<Button
+											size='sm'
+											textTransform='lowercase'
+											onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+										>
 											Show
 										</Button>
 									</InputRightElement>
 								</InputGroup>
+								<FormHelperText>Passwords in both fields must match.</FormHelperText>
 							</FormControl>
 						) : null}
 						<FormControl>
-							<Button type='submit' textTransform='lowercase' disabled={isInvalid} mt='4' px='8'>
+							<Button type='submit' textTransform='lowercase' disabled={isInvalidForm} mt='4' px='8'>
 								{showSignUp ? 'Sign Up' : 'Submit'}
 							</Button>
 						</FormControl>
